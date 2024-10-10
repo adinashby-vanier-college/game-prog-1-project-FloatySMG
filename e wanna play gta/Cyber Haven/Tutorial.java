@@ -1,3 +1,4 @@
+// WARNING: This file is auto-generated and any changes to it will be overwritten
 import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
@@ -6,9 +7,13 @@ import greenfoot.*;
  * 
  */
 public class Tutorial extends World
-{   private Cyrus cyrus; // Replace with your character class
+{
+    private Cyrus cyrus;
+    /* Replace with your character class*/
     private GreenfootImage background;
-    private int bgOffset; // Offset for scrolling
+    private int bgOffset;
+
+    /* Offset for scrolling*/
 
     /**
      * Constructor for objects of class Tutorial.
@@ -16,42 +21,48 @@ public class Tutorial extends World
     public Tutorial()
     {
         super(380, 380, 1);
-        background = new GreenfootImage("BackgroundLV1.png"); // Your background image
+        background =  new  GreenfootImage("BackgroundLV1.png");
+        /* Your background image*/
         setBackground(background);
-        cyrus = new Cyrus(); // Your character class instance
-        addObject(cyrus, 100, getHeight() / 2); // Initial position
-        bgOffset = 0; // Start with no offset
+        cyrus =  new  Cyrus();
+        /* Initial position*/
+        bgOffset = 0;
+        /* Start with no offset*/
         prepare();
     }
 
     /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
+     * Prepare the world for the start of the program. That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
         Cyrus cyrus =  new  Cyrus();
-        addObject(cyrus, 139, 290);
-        cyrus.setLocation(42, 330);
-        cyrus.setLocation(38, 336);
+        addObject(cyrus, 42, 330);
     }
-    
-    private void scrollBackground() {
-        // Move the character (handle input)
+
+    /**
+     * 
+     */
+    private void scrollBackground()
+    {
+        /* Move the character (handle input)*/
         if (Greenfoot.isKeyDown("right")) {
             cyrus.setLocation(cyrus.getX() + 5, cyrus.getY());
-            bgOffset += 5; // Adjust based on character speed
+            bgOffset = bgOffset + 5;
+            /* Adjust based on character speed*/
         }
         if (Greenfoot.isKeyDown("left")) {
             cyrus.setLocation(cyrus.getX() - 5, cyrus.getY());
-            bgOffset -= 5; // Adjust based on character speed
+            bgOffset = bgOffset - 5;
+            /* Adjust based on character speed*/
         }
-
-        // Scroll the background
+        /* Scroll the background*/
         if (bgOffset > 0) {
-            bgOffset = 0; // Prevent scrolling back too far
+            bgOffset = 0;
+            /* Prevent scrolling back too far*/
         }
         setBackground(background);
-        getBackground().drawImage(background, bgOffset, 0); // Draw background with offset
+        getBackground().drawImage(background, bgOffset, 0);
+        /* Draw background with offset*/
     }
 }

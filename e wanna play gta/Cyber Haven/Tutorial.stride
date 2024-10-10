@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="Tutorial" extends="World" extends-java="World" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields>
+        <variable access="private" type="Cyrus" type-java="Cyrus" name="cyrus" enable="true"/>
+        <comment xml:space="preserve">Replace with your character class</comment>
+        <variable access="private" type="GreenfootImage" type-java="GreenfootImage" name="background" enable="true"/>
+        <variable access="private" type="int" type-java="int" name="bgOffset" enable="true"/>
+    </fields>
+    <constructors>
+        <comment xml:space="preserve">Offset for scrolling</comment>
+        <constructor access="public" enable="true">
+            <javadoc xml:space="preserve">Constructor for objects of class Tutorial.</javadoc>
+            <params/>
+            <throws/>
+            <delegate target="super" params="380,380,1" params-java="380, 380, 1"/>
+            <body>
+                <assign dest="background" dest-java="background" src="new GreenfootImage(&quot;BackgroundLV1.png&quot;)" src-java=" new GreenfootImage(&quot;BackgroundLV1.png&quot;)" enable="true"/>
+                <comment xml:space="preserve">Your background image</comment>
+                <call expression="setBackground(background)" expression-java="setBackground(background)" enable="true"/>
+                <assign dest="cyrus" dest-java="cyrus" src="new Cyrus()" src-java=" new Cyrus()" enable="true"/>
+                <comment xml:space="preserve">Initial position</comment>
+                <assign dest="bgOffset" dest-java="bgOffset" src="0" src-java="0" enable="true"/>
+                <comment xml:space="preserve">Start with no offset</comment>
+                <call expression="prepare()" expression-java="prepare()" enable="true"/>
+            </body>
+        </constructor>
+    </constructors>
+    <methods>
+        <method access="private" type="void" type-java="void" name="prepare" enable="true">
+            <javadoc xml:space="preserve">Prepare the world for the start of the program. That is: create the initial objects and add them to the world.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="Cyrus" type-java="Cyrus" name="cyrus" value="new Cyrus()" value-java=" new Cyrus()" enable="true"/>
+                <call expression="addObject(cyrus,42,330)" expression-java="addObject(cyrus, 42, 330)" enable="true"/>
+            </body>
+        </method>
+        <method access="private" type="void" type-java="void" name="scrollBackground" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <comment xml:space="preserve">Move the character (handle input)</comment>
+                <if condition="Greenfoot.isKeyDown(&quot;right&quot;)" condition-java="Greenfoot.isKeyDown(&quot;right&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="cyrus.setLocation(cyrus.getX()+5,cyrus.getY())" expression-java="cyrus.setLocation(cyrus.getX() + 5, cyrus.getY())" enable="true"/>
+                        <assign dest="bgOffset" dest-java="bgOffset" src="bgOffset+5" src-java="bgOffset + 5" enable="true"/>
+                        <comment xml:space="preserve">Adjust based on character speed</comment>
+                    </ifStatements>
+                </if>
+                <if condition="Greenfoot.isKeyDown(&quot;left&quot;)" condition-java="Greenfoot.isKeyDown(&quot;left&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="cyrus.setLocation(cyrus.getX()-5,cyrus.getY())" expression-java="cyrus.setLocation(cyrus.getX() - 5, cyrus.getY())" enable="true"/>
+                        <assign dest="bgOffset" dest-java="bgOffset" src="bgOffset-5" src-java="bgOffset - 5" enable="true"/>
+                        <comment xml:space="preserve">Adjust based on character speed</comment>
+                    </ifStatements>
+                </if>
+                <comment xml:space="preserve">Scroll the background</comment>
+                <if condition="bgOffset&gt;0" condition-java="bgOffset &gt; 0" enable="true">
+                    <ifStatements>
+                        <assign dest="bgOffset" dest-java="bgOffset" src="0" src-java="0" enable="true"/>
+                        <comment xml:space="preserve">Prevent scrolling back too far</comment>
+                    </ifStatements>
+                </if>
+                <call expression="setBackground(background)" expression-java="setBackground(background)" enable="true"/>
+                <call expression="getBackground().drawImage(background,bgOffset,0)" expression-java="getBackground().drawImage(background, bgOffset, 0)" enable="true"/>
+                <comment xml:space="preserve">Draw background with offset</comment>
+            </body>
+        </method>
+    </methods>
+</class>
