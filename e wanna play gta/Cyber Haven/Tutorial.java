@@ -21,10 +21,10 @@ public class Tutorial extends World
     public Tutorial()
     {
         super(380, 380, 1);
-        background =  new  GreenfootImage("BackgroundLV1.png");
+        background =  new GreenfootImage("BackgroundLV1.png");
         /* Your background image*/
         setBackground(background);
-        cyrus =  new  Cyrus();
+        cyrus =  new Cyrus();
         /* Initial position*/
         bgOffset = 0;
         /* Start with no offset*/
@@ -36,7 +36,7 @@ public class Tutorial extends World
      */
     private void prepare()
     {
-        Cyrus cyrus =  new  Cyrus();
+        Cyrus cyrus =  new Cyrus();
         addObject(cyrus, 42, 330);
     }
 
