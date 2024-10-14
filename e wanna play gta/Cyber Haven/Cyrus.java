@@ -1,4 +1,3 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
 import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
@@ -8,14 +7,11 @@ import greenfoot.*;
  */
 public class Cyrus extends Actor
 {
-    private int speed = 2;
-    /* Normal speed*/
-    private int runSpeed = 4;
-    /* Speed when running*/
-    private GreenfootImage[] runningImages;
-    /* Array to hold running animation images*/
-    private int currentImageIndex = 0;
-    /* Index for current animation frame*/
+    private GreenfootImage idleSprite = new GreenfootImage("CyrusStand.png");
+    private GreenfootImage[] runningSprites;
+    private int imgIndex;
+    private int speed;
+    private int sprintMod = 2;
     private int vSpeed;
 
     /**
@@ -23,12 +19,10 @@ public class Cyrus extends Actor
      */
     public Cyrus()
     {
-        GreenfootImage myImage = getImage();
-        int myNewHeight = (int)myImage.getHeight() * 2;
-        int myNewWidth = (int)myImage.getWidth() * 1;
-        myImage.scale(myNewHeight, myNewWidth);
-        vSpeed = vSpeed + 1;
-        /* gravity*/
+        setImage(idleSprite);
+        imgIndex = 0;
+        speed = 2;
+        vSpeed = 0;
     }
 
     /**
@@ -36,76 +30,39 @@ public class Cyrus extends Actor
      */
     public void act()
     {
-        handleMovement();
+        vSpeed--;
+        setLocation(getX(), getY() - vSpeed);
         jump();
+        run();
     }
 
     /**
      * 
      */
-    private void handleMovement()
+    public void run()
     {
-        if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("D")) {
+        TutorialWorld level = getWorldOfType(TutorialWorld.class);
+        if (Greenfoot.isKeyDown("D") | Greenfoot.isKeyDown("Right")) {
             move(speed);
             if (Greenfoot.isKeyDown("shift")) {
-                move(runSpeed);
+                move(speed * sprintMod);
+            }
+            if (this.getX() >= level.getWidth() - 10) {
+                level.setBGOffset(50);
+                setLocation(0, 0);
             }
         }
-        
-        if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("A")) {
+        if (Greenfoot.isKeyDown("A") | Greenfoot.isKeyDown("Left")) {
             move( - speed);
             if (Greenfoot.isKeyDown("shift")) {
-                move( - runSpeed);
+                move( - speed * sprintMod);
             }
-        }
-        
-    }
-
-    /**
-     * 
-     */
-    private void animateRunning()
-    {
-        if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("left")) {
-            currentImageIndex = (currentImageIndex + 1) % 2;
-            setImage("CryrusRunning.png");
-            /* [currentImageIndex]);*/
-        }
-        else {
-            /* Set a standing image when not moving (add standing image)*/
-            setImage("CyrusStand.png");
-            /* Replace with your standing image*/
         }
     }
 
-    /**
-     * 
-     */
-    private void jump()
-    {
-        if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("W")) {
-            setLocation(getX(), getY() - 8);
-        }
-        /* in act or a 'moveVertically' method that it calls vSpeed++; // gravity*/
-        setLocation(getX(), getY() + vSpeed);
-        /* verical movement*/
-        if (vSpeed < 0) {
-            /* if rising bumps head*/
-            if (isTouching(null)) {
-                /* adjustPosition under object*/
-                vSpeed = 20;
-            }
-            if (vSpeed > 0) {
-                /* falling on surface*/
-                if (isTouching(CityBuilding1.class) || isAtEdge()) {
-                    /* adjust position over object or edge*/
-                    vSpeed = 10;
-                    if (isTouching(null)) {
-                        vSpeed = vSpeed - 15;
-                    }
-                    /* adjust value as needed*/
-                }
-            }
+    public void jump() {
+        if (Greenfoot.isKeyDown("W") | Greenfoot.isKeyDown("Up")) {
+            vSpeed = 10;
         }
     }
 }
