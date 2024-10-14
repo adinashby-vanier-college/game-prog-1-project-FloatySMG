@@ -1,4 +1,3 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
 import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
@@ -21,10 +20,10 @@ public class Tutorial extends World
     public Tutorial()
     {
         super(380, 380, 1);
-        background =  new GreenfootImage("BackgroundLV1.png");
+        background =  new  GreenfootImage("BackgroundLV1.png");
         /* Your background image*/
         setBackground(background);
-        cyrus =  new Cyrus();
+        cyrus =  new  Cyrus();
         /* Initial position*/
         bgOffset = 0;
         /* Start with no offset*/
@@ -36,48 +35,13 @@ public class Tutorial extends World
      */
     private void prepare()
     {
-        Cyrus cyrus =  new Cyrus();
+        Cyrus cyrus =  new  Cyrus();
         addObject(cyrus, 42, 330);
         cyrus.setLocation(178, 236);
         cyrus.setLocation(178, 234);
-        CityBuilding1 cityBuilding1 =  new CityBuilding1();
+        CityBuilding1 cityBuilding1 =  new  CityBuilding1();
         addObject(cityBuilding1, 141, 376);
-        cityBuilding1.setLocation(31, 360);
-        cityBuilding1.setLocation(65, 371);
-        cityBuilding1.setLocation(44, 358);
-        cityBuilding1.setLocation(69, 366);
-        cityBuilding1.setLocation(86, 378);
-        cityBuilding1.setLocation(72, 364);
-        cityBuilding1.setLocation(157, 282);
-        cityBuilding1.setLocation(54, 365);
-        cityBuilding1.setLocation(71, 363);
-        cityBuilding1.setLocation(43, 371);
-        cityBuilding1.setLocation(65, 356);
-        cityBuilding1.setLocation(46, 371);
-        cityBuilding1.setLocation(60, 375);
-        cityBuilding1.setLocation(62, 362);
-        cityBuilding1.setLocation(129, 339);
-        cityBuilding1.setLocation(117, 344);
-        cityBuilding1.setLocation(70, 363);
-        cityBuilding1.setLocation(38, 364);
-        cityBuilding1.setLocation(33, 353);
-        cityBuilding1.setLocation(58, 361);
-        cityBuilding1.setLocation(67, 358);
-        cityBuilding1.setLocation(49, 365);
-        cityBuilding1.setLocation(61, 356);
-        cityBuilding1.setLocation(41, 362);
-        cityBuilding1.setLocation(50, 366);
-        cityBuilding1.setLocation(40, 348);
-        cityBuilding1.setLocation(73, 364);
-        cityBuilding1.setLocation(59, 363);
-        cityBuilding1.setLocation(58, 365);
-        cityBuilding1.setLocation(44, 358);
-        cityBuilding1.setLocation(58, 351);
-        cityBuilding1.setLocation(71, 374);
-        cityBuilding1.setLocation(41, 360);
-        cityBuilding1.setLocation(42, 351);
-        cityBuilding1.setLocation(58, 361);
-        cityBuilding1.setLocation(57, 358);
+        
     }
 
     /**
