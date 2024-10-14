@@ -7,7 +7,19 @@
     </imports>
     <implements/>
     <fields/>
-    <constructors/>
+    <constructors>
+        <constructor access="public" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="GreenfootImage" type-java="GreenfootImage" name="myImage" value="getImage()" value-java="getImage()" enable="true"/>
+                <variable type="int" type-java="int" name="myNewHeight" value="(int)myImage.getHeight()/2" value-java="(int)myImage.getHeight() / 2" enable="true"/>
+                <variable type="int" type-java="int" name="myNewWidth" value="(int)myImage.getWidth()/4" value-java="(int)myImage.getWidth() / 4" enable="true"/>
+                <call expression="myImage.scale(myNewHeight,myNewWidth)" expression-java="myImage.scale(myNewHeight, myNewWidth)" enable="true"/>
+            </body>
+        </constructor>
+    </constructors>
     <methods>
         <method access="public" type="void" type-java="void" name="act" enable="true">
             <javadoc xml:space="preserve">Act - do whatever the CityBuilding1 wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>

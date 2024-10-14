@@ -39,6 +39,46 @@
             <body>
                 <variable type="Cyrus" type-java="Cyrus" name="cyrus" value="new Cyrus()" value-java=" new Cyrus()" enable="true"/>
                 <call expression="addObject(cyrus,42,330)" expression-java="addObject(cyrus, 42, 330)" enable="true"/>
+                <call expression="cyrus.setLocation(178,236)" expression-java="cyrus.setLocation(178, 236)" enable="true"/>
+                <call expression="cyrus.setLocation(178,234)" expression-java="cyrus.setLocation(178, 234)" enable="true"/>
+                <variable type="CityBuilding1" type-java="CityBuilding1" name="cityBuilding1" value="new CityBuilding1()" value-java=" new CityBuilding1()" enable="true"/>
+                <call expression="addObject(cityBuilding1,141,376)" expression-java="addObject(cityBuilding1, 141, 376)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(31,360)" expression-java="cityBuilding1.setLocation(31, 360)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(65,371)" expression-java="cityBuilding1.setLocation(65, 371)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(44,358)" expression-java="cityBuilding1.setLocation(44, 358)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(69,366)" expression-java="cityBuilding1.setLocation(69, 366)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(86,378)" expression-java="cityBuilding1.setLocation(86, 378)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(72,364)" expression-java="cityBuilding1.setLocation(72, 364)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(157,282)" expression-java="cityBuilding1.setLocation(157, 282)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(54,365)" expression-java="cityBuilding1.setLocation(54, 365)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(71,363)" expression-java="cityBuilding1.setLocation(71, 363)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(43,371)" expression-java="cityBuilding1.setLocation(43, 371)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(65,356)" expression-java="cityBuilding1.setLocation(65, 356)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(46,371)" expression-java="cityBuilding1.setLocation(46, 371)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(60,375)" expression-java="cityBuilding1.setLocation(60, 375)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(62,362)" expression-java="cityBuilding1.setLocation(62, 362)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(129,339)" expression-java="cityBuilding1.setLocation(129, 339)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(117,344)" expression-java="cityBuilding1.setLocation(117, 344)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(70,363)" expression-java="cityBuilding1.setLocation(70, 363)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(38,364)" expression-java="cityBuilding1.setLocation(38, 364)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(33,353)" expression-java="cityBuilding1.setLocation(33, 353)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(58,361)" expression-java="cityBuilding1.setLocation(58, 361)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(67,358)" expression-java="cityBuilding1.setLocation(67, 358)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(49,365)" expression-java="cityBuilding1.setLocation(49, 365)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(61,356)" expression-java="cityBuilding1.setLocation(61, 356)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(41,362)" expression-java="cityBuilding1.setLocation(41, 362)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(50,366)" expression-java="cityBuilding1.setLocation(50, 366)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(40,348)" expression-java="cityBuilding1.setLocation(40, 348)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(73,364)" expression-java="cityBuilding1.setLocation(73, 364)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(59,363)" expression-java="cityBuilding1.setLocation(59, 363)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(58,365)" expression-java="cityBuilding1.setLocation(58, 365)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(44,358)" expression-java="cityBuilding1.setLocation(44, 358)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(58,351)" expression-java="cityBuilding1.setLocation(58, 351)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(71,374)" expression-java="cityBuilding1.setLocation(71, 374)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(41,360)" expression-java="cityBuilding1.setLocation(41, 360)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(42,351)" expression-java="cityBuilding1.setLocation(42, 351)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(58,361)" expression-java="cityBuilding1.setLocation(58, 361)" enable="true"/>
+                <call expression="cityBuilding1.setLocation(57,358)" expression-java="cityBuilding1.setLocation(57, 358)" enable="true"/>
             </body>
         </method>
         <method access="private" type="void" type-java="void" name="scrollBackground" enable="true">
