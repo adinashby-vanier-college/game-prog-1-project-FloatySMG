@@ -24,8 +24,8 @@ public class Cyrus extends Actor
     public Cyrus()
     {
         GreenfootImage myImage = getImage();
-        int myNewHeight = (int)myImage.getHeight() * 4;
-        int myNewWidth = (int)myImage.getWidth() * 2;
+        int myNewHeight = (int)myImage.getHeight() * 2;
+        int myNewWidth = (int)myImage.getWidth() * 1;
         myImage.scale(myNewHeight, myNewWidth);
         vSpeed = vSpeed + 1;
         /* gravity*/
@@ -45,23 +45,20 @@ public class Cyrus extends Actor
      */
     private void handleMovement()
     {
-        if (Greenfoot.isKeyDown("right")) {
+        if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("D")) {
             move(speed);
             if (Greenfoot.isKeyDown("shift")) {
                 move(runSpeed);
             }
         }
         
-        if (Greenfoot.isKeyDown("left")) {
+        if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("A")) {
             move( - speed);
             if (Greenfoot.isKeyDown("shift")) {
                 move( - runSpeed);
             }
         }
         
-        if (Greenfoot.isKeyDown("space")) {
-            setLocation(getX(), getY() - 8);
-        }
     }
 
     /**
@@ -86,6 +83,9 @@ public class Cyrus extends Actor
      */
     private void jump()
     {
+        if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("W")) {
+            setLocation(getX(), getY() - 8);
+        }
         /* in act or a 'moveVertically' method that it calls vSpeed++; // gravity*/
         setLocation(getX(), getY() + vSpeed);
         /* verical movement*/
