@@ -7,13 +7,19 @@ import greenfoot.*;
  */
 public class Robot extends Actor
 {
-
+    private int vSpeed;
+    public Robot()
+    {vSpeed = 0;
+    }
+    
     /**
      * Act - do whatever the Robot wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
         eat();
+        vSpeed--;//gravity
+        setLocation(getX(), getY() - vSpeed);
     }
     
     /**
@@ -25,7 +31,7 @@ public class Robot extends Actor
         if (cyrus != null) {
             World world = getWorld();
             world.removeObject(cyrus);
-            Greenfoot.playSound(".wav");
+            //Greenfoot.playSound(".wav");
         }
     }
 }

@@ -34,8 +34,26 @@ public class Cyrus extends Actor
         setLocation(getX(), getY() - vSpeed);
         jump();
         run();
+        //fall();
+        checkFall();
+        onGround();
     }
-
+    
+    public void checkFall(){
+        if(onGround()){
+            vSpeed=0;
+        }
+        else{
+            setLocation(getX(), getY() - vSpeed);
+        }
+    }
+    
+    public boolean onGround()//work on this to stand on the building
+    {
+        Actor under = getOneObjectAtOffset(0, 0, CityBuilding1.class);
+        return under !=null;
+    }
+    
     /**
      * 
      */

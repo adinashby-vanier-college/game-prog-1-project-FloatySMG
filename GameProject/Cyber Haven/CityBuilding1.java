@@ -1,4 +1,3 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
 import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
@@ -8,7 +7,7 @@ import greenfoot.*;
  */
 public class CityBuilding1 extends Actor
 {
-
+    private int vSpeed;
     /**
      * 
      */
@@ -18,6 +17,8 @@ public class CityBuilding1 extends Actor
         int myNewHeight = (int)myImage.getHeight() / 2;
         int myNewWidth = (int)myImage.getWidth() / 4;
         myImage.scale(myNewHeight, myNewWidth);
+        
+        vSpeed = 0;
     }
 
     /**
@@ -25,5 +26,7 @@ public class CityBuilding1 extends Actor
      */
     public void act()
     {
+        vSpeed--;
+        setLocation(getX(), getY() - vSpeed);
     }
 }
