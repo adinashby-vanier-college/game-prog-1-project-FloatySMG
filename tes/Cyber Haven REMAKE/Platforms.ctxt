@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Platforms
+comment1.params=
+comment1.target=Platforms()
+comment2.params=actor
+comment2.target=boolean\ isTouchingTop(greenfoot.Actor)
+comment3.params=actor
+comment3.target=boolean\ isTouchingSide(greenfoot.Actor)
+comment4.params=actor
+comment4.target=boolean\ isTouchingBottom(greenfoot.Actor)
+numComments=5
