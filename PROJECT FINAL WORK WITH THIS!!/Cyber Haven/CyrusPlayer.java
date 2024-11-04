@@ -8,6 +8,13 @@ public class CyrusPlayer extends Actor {
     private int vSpeed = 0;         
     private boolean isJumping = false; 
 
+    // Constructor
+    public CyrusPlayer() {
+        GreenfootImage image = getImage();
+        image.scale(image.getWidth() * 2, image.getHeight() * 2); // Scale the image to twice its size
+        setImage(image);
+    }
+
     public void act() {
         move();
         jump();         
@@ -70,7 +77,6 @@ public class CyrusPlayer extends Actor {
     }
 
     private void checkLevelTransition() {
-        // Check if CyrusPlayer has reached the right side of the screen
         if (getX() >= getWorld().getWidth() - 5) {
             World currentWorld = getWorld();
             World nextWorld;
@@ -84,10 +90,9 @@ public class CyrusPlayer extends Actor {
             } else if (currentWorld instanceof TutorialStageD) {
                 nextWorld = new TutorialStageE();
             } else {
-                return; // No next stage if already at TutorialStageE
+                return;
             }
 
-            // Switch to the next world section
             Greenfoot.setWorld(nextWorld);
         }
     }
