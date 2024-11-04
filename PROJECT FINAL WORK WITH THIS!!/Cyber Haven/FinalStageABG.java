@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FinalStageABG extends World
 {
-
+    private GreenfootSound finalAMusic;
     /**
      * Constructor for objects of class FinalStageABG.
      * 
@@ -17,5 +17,23 @@ public class FinalStageABG extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1600, 600, 1); 
+        finalAMusic =  new  GreenfootSound("CYBER_FINAL1_BGM.wav");
+        playSound();
+    }
+    
+    /**
+     * 
+     */
+    public void playSound()
+    {
+        finalAMusic.playLoop();
+    }
+
+    /**
+     * 
+     */
+    public void stopSound()
+    {
+        finalAMusic.stop();
     }
 }

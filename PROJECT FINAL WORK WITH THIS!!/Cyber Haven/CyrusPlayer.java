@@ -24,10 +24,10 @@ public class CyrusPlayer extends Actor {
     }
 
     private void move() {
-        if (Greenfoot.isKeyDown("left")) {
+        if (Greenfoot.isKeyDown("left")| Greenfoot.isKeyDown("A")) {
             setLocation(getX() - speed, getY());
         }
-        if (Greenfoot.isKeyDown("right")) {
+        if (Greenfoot.isKeyDown("right")| Greenfoot.isKeyDown("D")) {
             setLocation(getX() + speed, getY());
         }
     }
