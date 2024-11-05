@@ -7,12 +7,25 @@ public class CyrusPlayer extends Actor {
     private int gravity = 1;        
     private int vSpeed = 0;         
     private boolean isJumping = false; 
+    private GreenfootImage standingImage; // For standing
+    private GreenfootImage walkA;         // For walking (first frame)
+    private GreenfootImage walkB;         // For walking (second frame)
+    private int frameCounter = 0;         // To count frames
+    private final int SWITCH_INTERVAL = 12; // Number of frames to switch images
 
     // Constructor
     public CyrusPlayer() {
-        GreenfootImage image = getImage();
-        image.scale(image.getWidth() * 2, image.getHeight() * 2); // Scale the image to twice its size
-        setImage(image);
+        standingImage = new GreenfootImage("CyrusStand.png"); // Standing image
+        walkA = new GreenfootImage("CyrusWalkA.png");         // First walking image
+        walkB = new GreenfootImage("CyrusWalkB.png");         // Second walking image
+        scaleImages(); // Scale images to 25% of their original size
+        setImage(standingImage); // Set initial image to standing
+    }
+
+    private void scaleImages() {
+        standingImage.scale((int)(standingImage.getWidth() * 0.25), (int)(standingImage.getHeight() * 0.25));
+        walkA.scale((int)(walkA.getWidth() * 0.25), (int)(walkA.getHeight() * 0.25));
+        walkB.scale((int)(walkB.getWidth() * 0.25), (int)(walkB.getHeight() * 0.25));
     }
 
     public void act() {
@@ -24,11 +37,32 @@ public class CyrusPlayer extends Actor {
     }
 
     private void move() {
-        if (Greenfoot.isKeyDown("left")| Greenfoot.isKeyDown("A")) {
+        boolean moving = false; // Track if moving
+        
+        if (Greenfoot.isKeyDown("left")) {
             setLocation(getX() - speed, getY());
-        }
-        if (Greenfoot.isKeyDown("right")| Greenfoot.isKeyDown("D")) {
+            moving = true; // Set moving to true when moving left
+        } 
+        if (Greenfoot.isKeyDown("right")) {
             setLocation(getX() + speed, getY());
+            moving = true; // Set moving to true when moving right
+        }
+
+        if (moving) {
+            frameCounter++; // Increment frame counter
+
+            if (frameCounter >= SWITCH_INTERVAL) {
+                // Switch images every 12 frames
+                if (getImage() == walkA) {
+                    setImage(walkB); // Switch to walkB
+                } else {
+                    setImage(walkA); // Switch to walkA
+                }
+                frameCounter = 0; // Reset the counter
+            }
+        } else {
+            setImage(standingImage); // Set back to standing image when not moving
+            frameCounter = 0; // Reset the counter when standing
         }
     }
 
@@ -77,6 +111,7 @@ public class CyrusPlayer extends Actor {
     }
 
     private void checkLevelTransition() {
+        // Check if CyrusPlayer has reached the right side of the screen
         if (getX() >= getWorld().getWidth() - 5) {
             World currentWorld = getWorld();
             World nextWorld;
@@ -90,9 +125,10 @@ public class CyrusPlayer extends Actor {
             } else if (currentWorld instanceof TutorialStageD) {
                 nextWorld = new TutorialStageE();
             } else {
-                return;
+                return; // No next stage if already at TutorialStageE
             }
 
+            // Switch to the next world section
             Greenfoot.setWorld(nextWorld);
         }
     }
