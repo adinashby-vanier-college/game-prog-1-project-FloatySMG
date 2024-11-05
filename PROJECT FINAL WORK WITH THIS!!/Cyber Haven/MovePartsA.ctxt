@@ -1,7 +1,12 @@
 #BlueJ class context
 comment0.target=MovePartsA
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MovePartsA\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ A\ moving\ platform\ that\ automatically\ moves\ left\ and\ right\ within\ a\ defined\ range.\r\n\ \r\n\ @author\ Your\ Name\r\n\ @version\ 1.0\r\n
 comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ MovePartsA\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=2
+comment1.target=MovePartsA()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ movePlatform()
+comment4.params=
+comment4.target=void\ movePlayerWithPlatform()
+numComments=5
