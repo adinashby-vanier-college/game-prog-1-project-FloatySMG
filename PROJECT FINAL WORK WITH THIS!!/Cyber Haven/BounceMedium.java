@@ -1,16 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class BounceMedium extends MapParts {
-    public BounceMedium() {
-        setImage("BounceMedium.png");  // Make sure the image is in your images folder
-    }
-
-    public void act() {
-        // No specific action needed here, just stand as a platform.
-    }
-
-    // This method will apply the bounce effect when a player steps on it
-    public void applyBounceEffect(CyrusPlayer player) {
-        player.applyBounce(10);  // Apply a bounce force of 10 (you can adjust this value)
+/**
+ * Write a description of class BounceMedium here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class BounceMedium extends MapParts
+{
+    /**
+     * Act - do whatever the BounceMedium wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        // Add your action code here.
     }
 }

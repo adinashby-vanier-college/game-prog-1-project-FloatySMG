@@ -1,4 +1,4 @@
-import greenfoot.*;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class CyrusPlayer extends Actor {
 
@@ -32,7 +32,7 @@ public class CyrusPlayer extends Actor {
         move();
         jump();         
         applyGravity();
-        checkPlatformCollision();
+        checkPlatformCollision();  // Now checks both Platforms and MapParts
         checkLevelTransition();
     }
 
@@ -77,8 +77,9 @@ public class CyrusPlayer extends Actor {
     }
 
     private boolean isOnPlatform() {
-        Platforms platform = (Platforms) getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Platforms.class);
-        return platform != null;
+        // Check if player is touching either a Platform or MapPart
+        Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
+        return platform instanceof Platforms || platform instanceof MapParts;  // Check for both Platforms and MapParts
     }
 
     public void jump() {
@@ -90,23 +91,53 @@ public class CyrusPlayer extends Actor {
     }
 
     private void checkPlatformCollision() {
-        Platforms platform = (Platforms) getOneIntersectingObject(Platforms.class);
+        // Check if the player is intersecting a platform or a map part
+        Actor platform = getOneIntersectingObject(Actor.class);
 
         if (platform != null) {
-            if (platform.isTouchingTop(this) && vSpeed >= 0) {
-                setLocation(getX(), platform.getY() - (platform.getImage().getHeight() / 2 + getImage().getHeight() / 2));
-                vSpeed = 0;
-                isJumping = false;
-            } else if (platform.isTouchingSide(this)) {
-                if (getX() < platform.getX()) {
-                    setLocation(platform.getX() - platform.getImage().getWidth() / 2 - getImage().getWidth() / 2, getY());
-                } else {
-                    setLocation(platform.getX() + platform.getImage().getWidth() / 2 + getImage().getWidth() / 2, getY());
+            if (platform instanceof Platforms || platform instanceof MapParts) {
+                if (platform instanceof Platforms) {
+                    // Handle Platform-specific collision
+                    handlePlatformCollision((Platforms) platform);
+                } else if (platform instanceof MapParts) {
+                    // Handle MapPart-specific collision
+                    handleMapPartCollision((MapParts) platform);
                 }
-                vSpeed = 0;
-            } else if (platform.isTouchingBottom(this)) {
-                vSpeed = -vSpeed / 2;
             }
+        }
+    }
+
+    private void handlePlatformCollision(Platforms platform) {
+        if (platform.isTouchingTop(this) && vSpeed >= 0) {
+            setLocation(getX(), platform.getY() - (platform.getImage().getHeight() / 2 + getImage().getHeight() / 2));
+            vSpeed = 0;
+            isJumping = false;
+        } else if (platform.isTouchingSide(this)) {
+            if (getX() < platform.getX()) {
+                setLocation(platform.getX() - platform.getImage().getWidth() / 2 - getImage().getWidth() / 2, getY());
+            } else {
+                setLocation(platform.getX() + platform.getImage().getWidth() / 2 + getImage().getWidth() / 2, getY());
+            }
+            vSpeed = 0;
+        } else if (platform.isTouchingBottom(this)) {
+            vSpeed = -vSpeed / 2;
+        }
+    }
+
+    private void handleMapPartCollision(MapParts mapPart) {
+        if (mapPart.isTouchingTop(this) && vSpeed >= 0) {
+            setLocation(getX(), mapPart.getY() - (mapPart.getImage().getHeight() / 2 + getImage().getHeight() / 2));
+            vSpeed = 0;
+            isJumping = false;
+        } else if (mapPart.isTouchingSide(this)) {
+            if (getX() < mapPart.getX()) {
+                setLocation(mapPart.getX() - mapPart.getImage().getWidth() / 2 - getImage().getWidth() / 2, getY());
+            } else {
+                setLocation(mapPart.getX() + mapPart.getImage().getWidth() / 2 + getImage().getWidth() / 2, getY());
+            }
+            vSpeed = 0;
+        } else if (mapPart.isTouchingBottom(this)) {
+            vSpeed = -vSpeed / 2;
         }
     }
 
