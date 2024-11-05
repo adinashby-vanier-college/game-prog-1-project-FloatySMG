@@ -1,19 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class MapParts here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class MapParts extends Actor
-{
-    /**
-     * Act - do whatever the MapParts wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+public class MapParts extends Actor {
+    public MapParts() {
+        // Do not load a default image here unless it's needed for all subclasses
+        // The subclasses should handle image loading themselves
+    }
+    
+    // Checks if an actor is standing on top of the platform
+    public boolean isTouchingTop(Actor actor) {
+        return actor.getY() <= getY() - (getImage().getHeight() / 2 + actor.getImage().getHeight() / 2) &&
+               actor.getY() >= getY() - (getImage().getHeight() / 2 + actor.getImage().getHeight());
+    }
+    
+    // Checks if an actor is colliding on the sides of the platform
+    public boolean isTouchingSide(Actor actor) {
+        return Math.abs(actor.getX() - getX()) <= (getImage().getWidth() / 2 + actor.getImage().getWidth() / 2) &&
+               Math.abs(actor.getY() - getY()) < getImage().getHeight() / 2;
+    }
+    
+    // Checks if an actor is hitting the bottom of the platform
+    public boolean isTouchingBottom(Actor actor) {
+        return actor.getY() >= getY() + (getImage().getHeight() / 2 + actor.getImage().getHeight() / 2) &&
+               actor.getY() <= getY() + (getImage().getHeight() / 2 + actor.getImage().getHeight());
     }
 }

@@ -45,5 +45,16 @@ public class Level1StageA extends Level1StageBG{
         level1StepB.setLocation(592,390);
         level1StepB.setLocation(600,408);
         level1StepB.setLocation(608,413);
+        Level1StepC level1StepC = new Level1StepC();
+        addObject(level1StepC,1216,379);
+        level1StepC.setLocation(1103,442);
+        level1StepC.setLocation(1190,438);
+        BounceHigh bounceHigh = new BounceHigh();
+        addObject(bounceHigh,777,529);
+        bounceHigh.setLocation(802,516);
+        BounceHigh bounceHigh2 = new BounceHigh();
+        addObject(bounceHigh2,1007,516);
+        bounceHigh2.setLocation(1039,526);
+        bounceHigh2.setLocation(1012,516);
     }
 }
