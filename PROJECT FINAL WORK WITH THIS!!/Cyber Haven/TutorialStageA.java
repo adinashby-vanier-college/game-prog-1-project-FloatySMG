@@ -123,5 +123,21 @@ public class TutorialStageA extends TutorialStageBG {
         cyrusPlayer.setLocation(68,364);
         cyrusPlayer.setLocation(70,367);
         cyrusPlayer.setLocation(69,374);
+        tutorialStepA5.setLocation(746,553);
+        tutorialStepA5.setLocation(825,525);
+        tutorialStepA5.setLocation(788,509);
+        tutorialStepA5.setLocation(786,502);
+        tutorialStepA2.setLocation(713,562);
+        tutorialStepA5.setLocation(715,305);
+        tutorialStepA2.setLocation(617,523);
+        tutorialStepA5.setLocation(777,572);
+        tutorialStepA5.setLocation(771,542);
+        tutorialStepA2.setLocation(657,475);
+        tutorialStepA5.setLocation(779,496);
+        tutorialStepA2.setLocation(687,474);
+        tutorialStepA5.setLocation(773,492);
+        tutorialStepA5.setLocation(803,111);
+        tutorialStepA2.setLocation(635,523);
+        tutorialStepA5.setLocation(766,502);
     }
 }

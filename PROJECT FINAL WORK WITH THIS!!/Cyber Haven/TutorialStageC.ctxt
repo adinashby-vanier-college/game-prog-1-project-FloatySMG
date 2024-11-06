@@ -2,4 +2,11 @@
 comment0.target=TutorialStageC
 comment1.params=
 comment1.target=TutorialStageC()
-numComments=2
+comment2.params=
+comment2.target=void\ prepare()
+comment2.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\r\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\r\n
+comment3.params=points
+comment3.target=void\ addScore(int)
+comment4.params=
+comment4.target=CoinCounter\ getCoinCounter()
+numComments=5
