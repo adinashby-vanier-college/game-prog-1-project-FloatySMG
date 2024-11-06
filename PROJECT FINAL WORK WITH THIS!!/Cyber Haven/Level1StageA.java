@@ -56,5 +56,11 @@ public class Level1StageA extends Level1StageBG{
         addObject(bounceHigh2,1007,516);
         bounceHigh2.setLocation(1039,526);
         bounceHigh2.setLocation(1012,516);
+        bounceMedium.setLocation(432,383);
+        bounceHigh.setLocation(804,500);
+        bounceHigh2.setLocation(1016,480);
+        bounceHigh2.setLocation(1016,476);
+        bounceHigh.setLocation(798,485);
+        bounceHigh.setLocation(800,476);
     }
 }

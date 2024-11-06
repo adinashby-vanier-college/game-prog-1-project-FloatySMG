@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=GravityBlock
-comment0.text=\n\ GravityBlock\ is\ a\ platform\ that\ descends\ when\ the\ player\ stands\ on\ it\n\ and\ ascends\ when\ the\ player\ leaves\ it.\n
+comment0.text=\r\n\ GravityBlock\ is\ a\ platform\ that\ descends\ when\ the\ player\ stands\ on\ it\r\n\ and\ ascends\ when\ the\ player\ leaves\ it.\r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ GravityBlock\ wants\ to\ do.\n\ The\ platform\ descends\ when\ the\ player\ is\ standing\ on\ it,\ and\ ascends\ when\ the\ player\ leaves.\n
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ GravityBlock\ wants\ to\ do.\r\n\ The\ platform\ descends\ when\ the\ player\ is\ standing\ on\ it,\ and\ ascends\ when\ the\ player\ leaves.\r\n
 comment2.params=
 comment2.target=void\ descend()
-comment2.text=\n\ Descend\ the\ platform\ slowly\ when\ the\ player\ is\ standing\ on\ it.\n\ The\ platform\ will\ descend\ until\ it\ reaches\ the\ bottom\ of\ the\ world.\n
+comment2.text=\r\n\ Descend\ the\ platform\ slowly\ when\ the\ player\ is\ standing\ on\ it.\r\n\ The\ platform\ will\ descend\ until\ it\ reaches\ the\ bottom\ of\ the\ world.\r\n
 comment3.params=
 comment3.target=void\ ascend()
-comment3.text=\n\ Ascend\ the\ platform\ slowly\ when\ the\ player\ is\ no\ longer\ standing\ on\ it.\n\ The\ platform\ will\ ascend\ back\ to\ its\ original\ Y\ position.\n
+comment3.text=\r\n\ Ascend\ the\ platform\ slowly\ when\ the\ player\ is\ no\ longer\ standing\ on\ it.\r\n\ The\ platform\ will\ ascend\ back\ to\ its\ original\ Y\ position.\r\n
 numComments=4
