@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=BounceHigh
-comment0.text=\n\ BounceHigh\ is\ a\ platform\ that\ makes\ the\ character\ jump\ extremely\ high\ when\ they\ touch\ it.\n
+comment0.text=\r\n\ BounceHigh\ is\ a\ platform\ that\ makes\ the\ character\ jump\ extremely\ high\ when\ they\ touch\ it.\r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ BounceHigh\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ BounceHigh\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 numComments=2
