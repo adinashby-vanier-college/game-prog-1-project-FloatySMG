@@ -47,5 +47,14 @@ public class TutorialStageB extends TutorialStageBG {
         addObject(tutorialStepG,1052,375);
         tutorialStepG.setLocation(667,446);
         movePartsB.setLocation(508,432);
+        MovePartsA movePartsA = new MovePartsA();
+        addObject(movePartsA,951,325);
+        TutorialStepE tutorialStepE = new TutorialStepE();
+        addObject(tutorialStepE,1187,482);
+        tutorialStepA.setLocation(74,518);
+        tutorialStepA.setLocation(36,562);
+        tutorialStepA.setLocation(55,541);
+        TutorialStepF tutorialStepF2 = new TutorialStepF();
+        addObject(tutorialStepF2,1443,530);
     }
 }
