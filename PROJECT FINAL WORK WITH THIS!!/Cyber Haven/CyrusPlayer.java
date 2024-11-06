@@ -163,4 +163,15 @@ public class CyrusPlayer extends Actor {
             Greenfoot.setWorld(nextWorld);
         }
     }
+    public void bounce() {
+        vSpeed = -21;  // Apply a strong upward force (bounce)
+        setLocation(getX(), getY() + vSpeed);  // Move the player upward immediately
+    }
+     public int getVSpeed() {
+        return vSpeed;
+    }
+    public void bounceMedium() {
+        vSpeed = -17;  // Smaller upward force (medium bounce)
+        setLocation(getX(), getY() + vSpeed);
+}
 }
