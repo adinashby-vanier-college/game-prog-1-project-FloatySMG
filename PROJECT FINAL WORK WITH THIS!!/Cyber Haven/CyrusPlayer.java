@@ -39,11 +39,11 @@ public class CyrusPlayer extends Actor {
     private void move() {
         boolean moving = false; // Track if moving
         
-        if (Greenfoot.isKeyDown("left")) {
+        if ((Greenfoot.isKeyDown("left")||(Greenfoot.isKeyDown("A")))){
             setLocation(getX() - speed, getY());
             moving = true; // Set moving to true when moving left
         } 
-        if (Greenfoot.isKeyDown("right")) {
+        if ((Greenfoot.isKeyDown("right")||(Greenfoot.isKeyDown("D")))) {
             setLocation(getX() + speed, getY());
             moving = true; // Set moving to true when moving right
         }
