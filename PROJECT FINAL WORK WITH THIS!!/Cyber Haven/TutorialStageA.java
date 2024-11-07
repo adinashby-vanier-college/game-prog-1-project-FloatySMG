@@ -139,5 +139,20 @@ public class TutorialStageA extends TutorialStageBG {
         tutorialStepA5.setLocation(803,111);
         tutorialStepA2.setLocation(635,523);
         tutorialStepA5.setLocation(766,502);
+        tutorialStepB3.setLocation(1090,473);
+        LivesImage livesImage = new LivesImage();
+        addObject(livesImage,1090,473);
+        tutorialStepB3.setLocation(1069,452);
+        tutorialStepB3.setLocation(1073,468);
+        tutorialStepB3.setLocation(1073,468);
+        removeObject(livesImage);
+        SceneMessageWelcomeA sceneMessageWelcomeA = new SceneMessageWelcomeA();
+        addObject(sceneMessageWelcomeA,492,141);
+        sceneMessageWelcomeA.setLocation(439,173);
+        tutorialStepB3.setLocation(1146,468);
+        tutorialStepB3.setLocation(1128,497);
+        tutorialStepB3.setLocation(1140,392);
+        tutorialStepB3.setLocation(1141,446);
+        tutorialStepB3.setLocation(1124,496);
     }
 }
