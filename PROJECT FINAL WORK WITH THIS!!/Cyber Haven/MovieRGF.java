@@ -11,8 +11,8 @@ public class MovieRGF extends Actor
     GifImage myGif = new GifImage("MovieB.gif");
     
     // Define the width and height you want for scaling
-    private int scaleWidth = 600;  // Set to desired width
-    private int scaleHeight = 200; // Set to desired height
+    private int scaleWidth = 1200;  // Set to desired width
+    private int scaleHeight = 600; // Set to desired height
 
     /**
      * Act - do whatever the Movie wants to do. This method is called whenever

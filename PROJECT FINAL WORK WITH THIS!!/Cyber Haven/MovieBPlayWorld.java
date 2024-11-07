@@ -17,5 +17,15 @@ public class MovieBPlayWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1600, 600, 1); 
+        prepare();
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        MovieRGF movieRGF = new MovieRGF();
+        addObject(movieRGF,774,284);
     }
 }
