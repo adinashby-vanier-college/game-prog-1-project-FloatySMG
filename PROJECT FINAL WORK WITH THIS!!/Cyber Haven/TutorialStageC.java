@@ -67,7 +67,7 @@ public class TutorialStageC extends TutorialStageBG {
     public void addScore(int points)
     {
         score += points;  // Increase the score by the given points
-        System.out.println("Score: " + score);  // Optional: print the score to the console for testing
+    //    System.out.println("Score: " + score);  // Optional: print the score to the console for testing
     }
 
     // Getter method to access the CoinCounter

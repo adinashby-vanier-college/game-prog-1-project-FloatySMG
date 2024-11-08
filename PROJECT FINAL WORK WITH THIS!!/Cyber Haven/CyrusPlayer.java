@@ -173,5 +173,9 @@ public class CyrusPlayer extends Actor {
     public void bounceMedium() {
         vSpeed = -17;  // Smaller upward force (medium bounce)
         setLocation(getX(), getY() + vSpeed);
-}
+    }
+    public void bounceHigh() {
+        vSpeed = -22;  // Smaller upward force (medium bounce)
+        setLocation(getX(), getY() + vSpeed);
+    }
 }
