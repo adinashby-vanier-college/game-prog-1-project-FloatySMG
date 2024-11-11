@@ -154,26 +154,30 @@ public class CyrusPlayer extends Actor {
             } else if (currentWorld instanceof TutorialStageC) {
                 nextWorld = new TutorialStageD();
             } else if (currentWorld instanceof TutorialStageD) {
-                nextWorld = new TutorialStageE();
+                nextWorld = new Level1StageA();  // Transition to Level1StageA
             } else {
-                return; // No next stage if already at TutorialStageE
+                return; // No next stage if already at the final stage
             }
 
             // Switch to the next world section
             Greenfoot.setWorld(nextWorld);
         }
     }
+    
     public void bounce() {
         vSpeed = -21;  // Apply a strong upward force (bounce)
         setLocation(getX(), getY() + vSpeed);  // Move the player upward immediately
     }
-     public int getVSpeed() {
+
+    public int getVSpeed() {
         return vSpeed;
     }
+
     public void bounceMedium() {
         vSpeed = -17;  // Smaller upward force (medium bounce)
         setLocation(getX(), getY() + vSpeed);
     }
+
     public void bounceHigh() {
         vSpeed = -22;  // Smaller upward force (medium bounce)
         setLocation(getX(), getY() + vSpeed);

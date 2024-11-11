@@ -154,5 +154,20 @@ public class TutorialStageA extends TutorialStageBG {
         tutorialStepB3.setLocation(1140,392);
         tutorialStepB3.setLocation(1141,446);
         tutorialStepB3.setLocation(1124,496);
+        CoinCollect coinCollect = new CoinCollect();
+        addObject(coinCollect,501,423);
+        coinCollect.setLocation(502,423);
+        CoinCollect coinCollect2 = new CoinCollect();
+        addObject(coinCollect2,653,410);
+        coinCollect2.setLocation(634,398);
+        CoinCollect coinCollect3 = new CoinCollect();
+        addObject(coinCollect3,760,379);
+        coinCollect3.setLocation(768,382);
+        CoinCollect coinCollect4 = new CoinCollect();
+        addObject(coinCollect4,1124,364);
+        coinCollect4.setLocation(1124,374);
+        CoinCollect coinCollect5 = new CoinCollect();
+        addObject(coinCollect5,1235,370);
+        coinCollect5.setLocation(1235,374);
     }
 }
