@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TutorialStageBG extends World
 {
-    private static GreenfootSound tutorialMusic = new GreenfootSound("CYBER_TUTORIAL_BGM.wav");
+    private static GreenfootSound tutorialMusic = new GreenfootSound("CYBER_TUTORIAL_BGM.mp3");
     
     /**
      * Constructor for objects of class TutorialStageBG.
