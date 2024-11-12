@@ -154,7 +154,9 @@ public class CyrusPlayer extends Actor {
             } else if (currentWorld instanceof TutorialStageC) {
                 nextWorld = new TutorialStageD();
             } else if (currentWorld instanceof TutorialStageD) {
-                nextWorld = new Level1StageA();  // Transition to Level1StageA
+                nextWorld = new Level1StageA();
+            } else if (currentWorld instanceof Level1StageA) {
+                nextWorld = new Level1StageB();
             } else {
                 return; // No next stage if already at the final stage
             }
