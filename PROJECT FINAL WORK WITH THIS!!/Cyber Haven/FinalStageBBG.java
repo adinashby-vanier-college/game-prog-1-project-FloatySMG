@@ -19,6 +19,7 @@ public class FinalStageBBG extends World
         super(1600, 600, 1); 
         finalBMusic =  new  GreenfootSound("CYBER_FINAL2_BGM.wav");
         playSound();
+        prepare();
     }
     
     /**
@@ -35,5 +36,12 @@ public class FinalStageBBG extends World
     public void stopSound()
     {
         finalBMusic.stop();
+    }
+    
+    private void prepare()
+    {
+        CoinCounter coinCounter = new CoinCounter();
+        addObject(coinCounter,52,54);
+        coinCounter.setLocation(52,44);
     }
 }

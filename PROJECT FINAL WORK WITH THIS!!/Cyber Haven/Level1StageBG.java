@@ -20,6 +20,7 @@ public class Level1StageBG extends World
         super(1600, 600, 1); 
         level1Music =  new  GreenfootSound("CYBER_LEVEL1_BGM.wav");
         playSound();
+        prepare();
     }
     
     /**
@@ -36,5 +37,12 @@ public class Level1StageBG extends World
     public void stopSound()
     {
         level1Music.stop();
+    }
+    
+    private void prepare()
+    {
+        CoinCounter coinCounter = new CoinCounter();
+        addObject(coinCounter,52,54);
+        coinCounter.setLocation(52,44);
     }
 }
