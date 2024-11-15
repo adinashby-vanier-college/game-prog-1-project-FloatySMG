@@ -40,6 +40,7 @@
                 <if condition="Greenfoot.mouseClicked(this)" condition-java="Greenfoot.mouseClicked(this)" enable="true">
                     <ifStatements>
                         <call expression="transitionToMovieBPlayWorld()" expression-java="transitionToMovieBPlayWorld()" enable="true"/>
+                        <call expression="Greenfoot.playSound(&quot;mouseclick.wav&quot;)" expression-java="Greenfoot.playSound(&quot;mouseclick.wav&quot;)" enable="true"/>
                     </ifStatements>
                 </if>
             </body>

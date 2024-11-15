@@ -82,6 +82,8 @@ public class TutorialStageA extends TutorialStageBG {
         tutorialStepB5.setLocation(1566,562);
         removeObject(tutorialStepB5);
 
+
+
         tutorialStepA3.setLocation(1563,552);
         TutorialStepA tutorialStepA4 = new TutorialStepA();
         addObject(tutorialStepA4,1501,545);

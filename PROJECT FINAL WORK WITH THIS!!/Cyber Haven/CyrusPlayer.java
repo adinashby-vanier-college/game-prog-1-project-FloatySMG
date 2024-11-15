@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class CyrusPlayer extends Actor {
-
+public class CyrusPlayer extends Actor 
+{
     private int speed = 4;          
     private int jumpStrength = -15; 
     private int gravity = 1;        
@@ -12,6 +12,19 @@ public class CyrusPlayer extends Actor {
     private GreenfootImage walkB;         // For walking (second frame)
     private int frameCounter = 0;         // To count frames
     private final int SWITCH_INTERVAL = 12; // Number of frames to switch images
+    private CoinCounter counter;
+    TutorialStageBG thisGame; 
+    
+    
+    public void act() 
+    {
+        move();
+        jump();         
+        applyGravity();
+        checkPlatformCollision();  // Now checks both Platforms and MapParts
+        checkLevelTransition();
+        collectCoin();
+    }
 
     // Constructor
     public CyrusPlayer() {
@@ -22,19 +35,17 @@ public class CyrusPlayer extends Actor {
         setImage(standingImage); // Set initial image to standing
     }
 
+    public CyrusPlayer(CoinCounter pointCounter)
+    {
+       counter = pointCounter; 
+    }
+    
     private void scaleImages() {
         standingImage.scale((int)(standingImage.getWidth() * 0.25), (int)(standingImage.getHeight() * 0.25));
         walkA.scale((int)(walkA.getWidth() * 0.25), (int)(walkA.getHeight() * 0.25));
         walkB.scale((int)(walkB.getWidth() * 0.25), (int)(walkB.getHeight() * 0.25));
     }
 
-    public void act() {
-        move();
-        jump();         
-        applyGravity();
-        checkPlatformCollision();  // Now checks both Platforms and MapParts
-        checkLevelTransition();
-    }
 
     private void move() {
         boolean moving = false; // Track if moving
@@ -76,7 +87,8 @@ public class CyrusPlayer extends Actor {
         }
     }
 
-    private boolean isOnPlatform() {
+    private boolean isOnPlatform() 
+    {
         // Check if player is touching either a Platform or MapPart
         Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
         return platform instanceof Platforms || platform instanceof MapParts;  // Check for both Platforms and MapParts
@@ -183,5 +195,17 @@ public class CyrusPlayer extends Actor {
     public void bounceHigh() {
         vSpeed = -22;  // Smaller upward force (medium bounce)
         setLocation(getX(), getY() + vSpeed);
+    }
+    
+    public void collectCoin()
+    {
+        Actor coinCollect = getOneIntersectingObject(CoinCollect.class);
+        if (coinCollect != null)
+        {
+            World world = getWorld();
+            world.removeObject(coinCollect);
+            Greenfoot.playSound("coinrecieved.wav");   
+            //counter.add(1);
+        }  
     }
 }

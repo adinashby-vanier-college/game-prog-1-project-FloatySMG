@@ -7,8 +7,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TutorialStageBG extends World
 {
-    private static GreenfootSound tutorialMusic = new GreenfootSound("CYBER_TUTORIAL_BGM.mp3");
-
+    public static GreenfootSound tutorialMusic;
+    public static int counter = 0;
     /**
      * Constructor for objects of class TutorialStageBG.
      */
@@ -16,14 +16,16 @@ public class TutorialStageBG extends World
     {    
         // Create a new world with 1600x600 cells with a cell size of 1x1 pixels.
         super(1600, 600, 1); 
-        playSound();
+        tutorialMusic = new GreenfootSound("cybertutorialbgm.wav") ;
+        playMusic();
         prepare();
+        
     }
 
     /**
      * Plays the background music in a loop.
      */
-    public void playSound()
+    public void playMusic()
     {
         tutorialMusic.playLoop();
     }
@@ -42,8 +44,11 @@ public class TutorialStageBG extends World
      */
     private void prepare()
     {
+        //CoinCounter coinCounter = new CoinCounter();
+        //addObject(coinCounter,52,54);
+        //coinCounter.setLocation(52,44);
         CoinCounter coinCounter = new CoinCounter();
-        addObject(coinCounter,52,54);
-        coinCounter.setLocation(52,44);
+        addObject(coinCounter,40,44);
+        CyrusPlayer cyrus = new CyrusPlayer(coinCounter);
     }
 }

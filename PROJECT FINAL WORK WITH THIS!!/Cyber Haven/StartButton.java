@@ -35,6 +35,7 @@ public class StartButton extends MenuButtons
         }
         if (Greenfoot.mouseClicked(this)) {
             transitionToMovieBPlayWorld();
+            Greenfoot.playSound("mouseclick.wav");
         }
     }
 
