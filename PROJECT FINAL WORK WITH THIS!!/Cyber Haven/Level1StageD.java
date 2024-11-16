@@ -45,5 +45,23 @@ public class Level1StageD extends Level1StageBG{
         bounceHigh2.setLocation(791,496);
         addObject(bounceMedium,667,496);
         bounceMedium.setLocation(666,496);
+        bounceMedium.setLocation(687,462);
+        bounceMedium.setLocation(665,465);
+        bounceHigh2.setLocation(747,381);
+        bounceHigh2.setLocation(782,398);
+        MovePartsA movePartsA = new MovePartsA();
+        addObject(movePartsA,914,154);
+        BounceMedium bounceMedium2 = new BounceMedium();
+        addObject(bounceMedium2,1155,314);
+        Level1StepB level1StepB = new Level1StepB();
+        addObject(level1StepB,1460,428);
+        removeObject(bounceMedium2);
+        BounceHigh bounceHigh3 = new BounceHigh();
+        addObject(bounceHigh3,1186,273);
+        bounceHigh3.setLocation(1186,289);
+        level1StepB.setLocation(1394,361);
+        level1StepB.setLocation(1409,463);
+        Level1StepB level1StepB2 = new Level1StepB();
+        addObject(level1StepB2,1565,461);
     }
 }

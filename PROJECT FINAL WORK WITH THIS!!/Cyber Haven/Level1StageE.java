@@ -39,5 +39,10 @@ public class Level1StageE extends Level1StageBG{
         tutorialStepA.setLocation(715,455);
         CyrusPlayer cyrusPlayer2 = new CyrusPlayer();
         addObject(cyrusPlayer2,689,322);
+        removeObject(tutorialStepA);
+        cyrusPlayer2.setLocation(160,283);
+        Level1StepB level1StepB3 = new Level1StepB();
+        addObject(level1StepB3,69,408);
+        cyrusPlayer2.setLocation(59,195);
     }
 }
