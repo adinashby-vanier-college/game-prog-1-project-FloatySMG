@@ -9,6 +9,8 @@ public class RobotLv1 extends Actor {
     private int maxCannonBallHits = 1;  // Number of hits before disappearing (1 hit)
     private int cannonBallHits = 0;  // Counter for cannonball hits
     
+    private static final int ATTACK_DISTANCE = 300;  // Distance threshold for attacking Cyrus
+
     public void act() {
         move();                // Move towards Cyrus
         applyGravity();        // Apply gravity
@@ -17,13 +19,16 @@ public class RobotLv1 extends Actor {
     }
     
     private void move() {
-        // Simple AI to move towards Cyrus (horizontal movement)
         Actor cyrus = getWorld().getObjects(CyrusPlayer.class).get(0);  // Get the Cyrus player
         if (cyrus != null) {
-            if (getX() < cyrus.getX()) {
-                setLocation(getX() + speed, getY());
-            } else if (getX() > cyrus.getX()) {
-                setLocation(getX() - speed, getY());
+            // Check if Cyrus is within attack range (300 units)
+            if (getDistanceTo(cyrus) <= ATTACK_DISTANCE) {
+                // Move towards Cyrus if within attack range
+                if (getX() < cyrus.getX()) {
+                    setLocation(getX() + speed, getY());
+                } else if (getX() > cyrus.getX()) {
+                    setLocation(getX() - speed, getY());
+                }
             }
         }
     }
@@ -102,5 +107,12 @@ public class RobotLv1 extends Actor {
 
     private void vanish() {
         getWorld().removeObject(this);  // Remove RobotLv1 from the world
+    }
+
+    // Method to calculate distance to the player
+    private double getDistanceTo(Actor actor) {
+        int dx = getX() - actor.getX();
+        int dy = getY() - actor.getY();
+        return Math.sqrt(dx * dx + dy * dy);  // Pythagorean theorem to calculate distance
     }
 }

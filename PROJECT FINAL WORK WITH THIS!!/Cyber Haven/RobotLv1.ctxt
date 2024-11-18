@@ -2,6 +2,8 @@
 comment0.target=RobotLv1
 comment1.params=
 comment1.target=void\ act()
+comment10.params=actor
+comment10.target=double\ getDistanceTo(greenfoot.Actor)
 comment2.params=
 comment2.target=void\ move()
 comment3.params=
@@ -18,4 +20,4 @@ comment8.params=
 comment8.target=void\ checkCannonBallHits()
 comment9.params=
 comment9.target=void\ vanish()
-numComments=10
+numComments=11
