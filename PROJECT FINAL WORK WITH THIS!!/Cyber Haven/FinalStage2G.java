@@ -34,6 +34,7 @@ public class FinalStage2G extends FinalStageBBG
     {
         return timeStepDuration;
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -64,5 +65,8 @@ public class FinalStage2G extends FinalStageBBG
         cannon.setLocation(195,443);
         cannon.setLocation(197,444);
         cannon.setLocation(204,427);
+        cannon.setLocation(79,457);
+        Final2StepA final2StepA5 = new Final2StepA();
+        addObject(final2StepA5,335,513);
     }
 }

@@ -1,12 +1,16 @@
 #BlueJ class context
 comment0.target=RobotBoss
-comment0.text=\r\n\ A\ robot\ boss\ that\ takes\ damage\ from\ cannonballs.\r\n
+comment0.text=\r\n\ A\ robot\ boss\ that\ takes\ damage\ from\ cannonballs\ and\ moves\ slightly\ to\ the\ right.\r\n
 comment1.params=
 comment1.target=RobotBoss()
-comment2.params=
-comment2.target=void\ act()
+comment2.params=world
+comment2.target=void\ addedToWorld(greenfoot.World)
 comment3.params=
-comment3.target=void\ takeDamage()
+comment3.target=void\ act()
 comment4.params=
-comment4.target=void\ die()
-numComments=5
+comment4.target=void\ takeDamage()
+comment5.params=
+comment5.target=void\ die()
+comment6.params=
+comment6.target=void\ moveHorizontally()
+numComments=7

@@ -89,10 +89,9 @@ public class CyrusPlayer extends Actor
 
     private boolean isOnPlatform() 
     {
-        // Check if player is touching either a Platform or MapPart
-        Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
-        return platform instanceof Platforms || platform instanceof MapParts;  // Check for both Platforms and MapParts
-    }
+            Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
+            return platform instanceof Platforms || platform instanceof MapParts;
+        }
 
     public void jump() {
         if ((Greenfoot.isKeyDown("W") || Greenfoot.isKeyDown("Up")) && !isJumping && isOnPlatform()) {
@@ -102,22 +101,19 @@ public class CyrusPlayer extends Actor
         }
     }
 
-    private void checkPlatformCollision() {
-        // Check if the player is intersecting a platform or a map part
-        Actor platform = getOneIntersectingObject(Actor.class);
+private void checkPlatformCollision() {
+    Actor platform = getOneIntersectingObject(Actor.class);
 
-        if (platform != null) {
-            if (platform instanceof Platforms || platform instanceof MapParts) {
-                if (platform instanceof Platforms) {
-                    // Handle Platform-specific collision
-                    handlePlatformCollision((Platforms) platform);
-                } else if (platform instanceof MapParts) {
-                    // Handle MapPart-specific collision
-                    handleMapPartCollision((MapParts) platform);
-                }
+    if (platform != null) {
+        if (platform instanceof Platforms || platform instanceof MapParts) {
+            if (platform instanceof Platforms) {
+                handlePlatformCollision((Platforms) platform);
+            } else if (platform instanceof MapParts) {
+                handleMapPartCollision((MapParts) platform);
             }
         }
     }
+}   
 
     private void handlePlatformCollision(Platforms platform) {
         if (platform.isTouchingTop(this) && vSpeed >= 0) {
@@ -190,7 +186,10 @@ public class CyrusPlayer extends Actor
     public int getVSpeed() {
         return vSpeed;
     }
-
+    
+    public void die() {
+        getWorld().removeObject(this);
+    }
     public void bounceMedium() {
         vSpeed = -17;  // Smaller upward force (medium bounce)
         setLocation(getX(), getY() + vSpeed);
