@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 public class CyrusPlayer extends Actor 
 {
@@ -7,73 +7,65 @@ public class CyrusPlayer extends Actor
     private int gravity = 1;        
     private int vSpeed = 0;         
     private boolean isJumping = false; 
-    private GreenfootImage standingImage; // For standing
-    private GreenfootImage walkA;         // For walking (first frame)
-    private GreenfootImage walkB;         // For walking (second frame)
-    private int frameCounter = 0;         // To count frames
-    private final int SWITCH_INTERVAL = 12; // Number of frames to switch images
+    private GreenfootImage standingImage; 
+    private GreenfootImage walkA;         
+    private GreenfootImage walkB;         
+    private int frameCounter = 0;         
+    private final int SWITCH_INTERVAL = 12; 
     private CoinCounter counter;
     TutorialStageBG thisGame; 
-    
-    
+
     public void act() 
     {
         move();
         jump();         
         applyGravity();
-        checkPlatformCollision();  // Now checks both Platforms and MapParts
+        checkPlatformCollision();
         checkLevelTransition();
         collectCoin();
     }
 
     // Constructor
     public CyrusPlayer() {
-        standingImage = new GreenfootImage("CyrusStand.png"); // Standing image
-        walkA = new GreenfootImage("CyrusWalkA.png");         // First walking image
-        walkB = new GreenfootImage("CyrusWalkB.png");         // Second walking image
-        scaleImages(); // Scale images to 25% of their original size
-        setImage(standingImage); // Set initial image to standing
+        standingImage = new GreenfootImage("CyrusStand.png");
+        walkA = new GreenfootImage("CyrusWalkA.png");
+        walkB = new GreenfootImage("CyrusWalkB.png");
+        scaleImages();
+        setImage(standingImage);
     }
 
-    public CyrusPlayer(CoinCounter pointCounter)
-    {
-       counter = pointCounter; 
-    }
-    
     private void scaleImages() {
         standingImage.scale((int)(standingImage.getWidth() * 0.25), (int)(standingImage.getHeight() * 0.25));
         walkA.scale((int)(walkA.getWidth() * 0.25), (int)(walkA.getHeight() * 0.25));
         walkB.scale((int)(walkB.getWidth() * 0.25), (int)(walkB.getHeight() * 0.25));
     }
 
-
     private void move() {
-        boolean moving = false; // Track if moving
-        
-        if ((Greenfoot.isKeyDown("left")||(Greenfoot.isKeyDown("A")))){
+        boolean moving = false;
+
+        if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("A")) {
             setLocation(getX() - speed, getY());
-            moving = true; // Set moving to true when moving left
-        } 
-        if ((Greenfoot.isKeyDown("right")||(Greenfoot.isKeyDown("D")))) {
+            moving = true;
+        }
+        if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("D")) {
             setLocation(getX() + speed, getY());
-            moving = true; // Set moving to true when moving right
+            moving = true;
         }
 
         if (moving) {
-            frameCounter++; // Increment frame counter
+            frameCounter++;
 
             if (frameCounter >= SWITCH_INTERVAL) {
-                // Switch images every 12 frames
                 if (getImage() == walkA) {
-                    setImage(walkB); // Switch to walkB
+                    setImage(walkB);
                 } else {
-                    setImage(walkA); // Switch to walkA
+                    setImage(walkA);
                 }
-                frameCounter = 0; // Reset the counter
+                frameCounter = 0;
             }
         } else {
-            setImage(standingImage); // Set back to standing image when not moving
-            frameCounter = 0; // Reset the counter when standing
+            setImage(standingImage);
+            frameCounter = 0;
         }
     }
 
@@ -82,38 +74,36 @@ public class CyrusPlayer extends Actor
             vSpeed += gravity;
             setLocation(getX(), getY() + vSpeed);
         } else {
-            vSpeed = 0;         
+            vSpeed = 0;
             isJumping = false;
         }
     }
 
-    private boolean isOnPlatform() 
-    {
-            Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
-            return platform instanceof Platforms || platform instanceof MapParts;
-        }
+    private boolean isOnPlatform() {
+        Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
+        return platform instanceof Platforms || platform instanceof MapParts;
+    }
 
     public void jump() {
         if ((Greenfoot.isKeyDown("W") || Greenfoot.isKeyDown("Up")) && !isJumping && isOnPlatform()) {
-            vSpeed = jumpStrength;  
+            vSpeed = jumpStrength;
             isJumping = true;
             setLocation(getX(), getY() + vSpeed);
         }
     }
 
-private void checkPlatformCollision() {
-    Actor platform = getOneIntersectingObject(Actor.class);
-
-    if (platform != null) {
-        if (platform instanceof Platforms || platform instanceof MapParts) {
-            if (platform instanceof Platforms) {
-                handlePlatformCollision((Platforms) platform);
-            } else if (platform instanceof MapParts) {
-                handleMapPartCollision((MapParts) platform);
+    private void checkPlatformCollision() {
+        Actor platform = getOneIntersectingObject(Actor.class);
+        if (platform != null) {
+            if (platform instanceof Platforms || platform instanceof MapParts) {
+                if (platform instanceof Platforms) {
+                    handlePlatformCollision((Platforms) platform);
+                } else if (platform instanceof MapParts) {
+                    handleMapPartCollision((MapParts) platform);
+                }
             }
         }
     }
-}   
 
     private void handlePlatformCollision(Platforms platform) {
         if (platform.isTouchingTop(this) && vSpeed >= 0) {
@@ -150,7 +140,6 @@ private void checkPlatformCollision() {
     }
 
     private void checkLevelTransition() {
-        // Check if CyrusPlayer has reached the right side of the screen
         if (getX() >= getWorld().getWidth() - 5) {
             World currentWorld = getWorld();
             World nextWorld;
@@ -170,45 +159,42 @@ private void checkPlatformCollision() {
             } else if (currentWorld instanceof Level1StageC) {
                 nextWorld = new Level1StageD();
             } else {
-                return; // No next stage if already at the final stage
+                return;
             }
 
-            // Switch to the next world section
             Greenfoot.setWorld(nextWorld);
         }
     }
-    
+
     public void bounce() {
-        vSpeed = -21;  // Apply a strong upward force (bounce)
-        setLocation(getX(), getY() + vSpeed);  // Move the player upward immediately
+        vSpeed = -21;
+        setLocation(getX(), getY() + vSpeed);
     }
 
     public int getVSpeed() {
         return vSpeed;
     }
-    
+
     public void die() {
         getWorld().removeObject(this);
     }
+
     public void bounceMedium() {
-        vSpeed = -17;  // Smaller upward force (medium bounce)
+        vSpeed = -17;
         setLocation(getX(), getY() + vSpeed);
     }
 
     public void bounceHigh() {
-        vSpeed = -22;  // Smaller upward force (medium bounce)
+        vSpeed = -22;
         setLocation(getX(), getY() + vSpeed);
     }
-    
-    public void collectCoin()
-    {
+
+    public void collectCoin() {
         Actor coinCollect = getOneIntersectingObject(CoinCollect.class);
-        if (coinCollect != null)
-        {
+        if (coinCollect != null) {
             World world = getWorld();
             world.removeObject(coinCollect);
-            Greenfoot.playSound("coinrecieved.wav");   
-            //counter.add(1);
-        }  
+            Greenfoot.playSound("coinrecieved.wav");
+        }
     }
 }

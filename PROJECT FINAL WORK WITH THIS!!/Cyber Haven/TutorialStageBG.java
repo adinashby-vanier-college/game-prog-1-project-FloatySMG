@@ -49,6 +49,5 @@ public class TutorialStageBG extends World
         //coinCounter.setLocation(52,44);
         CoinCounter coinCounter = new CoinCounter();
         addObject(coinCounter,40,44);
-        CyrusPlayer cyrus = new CyrusPlayer(coinCounter);
     }
 }

@@ -3,33 +3,33 @@ public class Vector2D
     private double x;
     private double y;
 
-    // Constructor
     public Vector2D(double x, double y)
     {
         this.x = x;
         this.y = y;
     }
 
-    // Getters and setters
-    public double getX() { return x; }
-    public double getY() { return y; }
-
-    public void setX(double x) { this.x = x; }
-    public void setY(double y) { this.y = y; }
-
-    // Vector addition (v1 + v2)
-    public static Vector2D add(Vector2D v1, Vector2D v2)
+    public double getX()
     {
-        return new Vector2D(v1.getX() + v2.getX(), v1.getY() + v2.getY());
+        return x;
     }
 
-    // Scalar multiplication (v * scalar)
-    public static Vector2D multiply(Vector2D v, double scalar)
+    public double getY()
     {
-        return new Vector2D(v.getX() * scalar, v.getY() * scalar);
+        return y;
     }
 
-    // Normalize the vector (make its length 1)
+    public void setX(double x)
+    {
+        this.x = x;
+    }
+
+    public void setY(double y)
+    {
+        this.y = y;
+    }
+
+    // Normalize the vector
     public void normalize()
     {
         double length = Math.sqrt(x * x + y * y);
@@ -40,9 +40,15 @@ public class Vector2D
         }
     }
 
-    // Calculate the length of the vector (magnitude)
-    public double length()
+    // Multiply the vector by a scalar
+    public static Vector2D multiply(Vector2D vector, double scalar)
     {
-        return Math.sqrt(x * x + y * y);
+        return new Vector2D(vector.getX() * scalar, vector.getY() * scalar);
+    }
+
+    // Add two vectors
+    public static Vector2D add(Vector2D v1, Vector2D v2)
+    {
+        return new Vector2D(v1.getX() + v2.getX(), v1.getY() + v2.getY());
     }
 }
