@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=FinalStage2G
-comment0.text=\r\n\ A\ specialized\ version\ of\ FinalStageBBG\ with\ time-step\ management.\r\n
+comment0.text=\r\n\ A\ specialized\ version\ of\ FinalStageBBG\ with\ time-step\ management\ and\ dynamic\ music\ handling.\r\n
 comment1.params=
 comment1.target=FinalStage2G()
 comment2.params=
@@ -11,6 +11,9 @@ comment4.params=
 comment4.target=double\ getTimeStepDuration()
 comment4.text=\r\n\ Returns\ the\ time-step\ duration\ in\ seconds.\r\n
 comment5.params=
-comment5.target=void\ prepare()
-comment5.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\r\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\r\n
-numComments=6
+comment5.target=void\ handleMusic()
+comment5.text=\r\n\ Handles\ music\ switching\ based\ on\ RobotBoss's\ state.\r\n
+comment6.params=
+comment6.target=void\ prepare()
+comment6.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\r\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\r\n
+numComments=7

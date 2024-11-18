@@ -12,6 +12,7 @@ public class RobotBoss extends Actor {
     private long lastShootTime; // To track the time of the last shot
     private int hitCount; // To track how many hits the RobotBoss has taken
     private boolean robotsSummoned; // Flag to ensure robots are only summoned once
+    private boolean finalStageTriggered; // Flag for spawning platforms and robots at 10 health
 
     public RobotBoss() {
         health = 30;
@@ -22,6 +23,7 @@ public class RobotBoss extends Actor {
         lastShootTime = 0;
         hitCount = 0; // Initialize hit count
         robotsSummoned = false; // Initialize robotsSummoned flag
+        finalStageTriggered = false; // Initialize final stage trigger
     }
 
     public void addedToWorld(World world) {
@@ -69,6 +71,12 @@ public class RobotBoss extends Actor {
         if (health <= 15) {
             shootFaster();
             spawnAnotherMovePartsB(); // Ensure it only spawns once
+        }
+
+        // At health 10, spawn 3 platforms and 2 RobotLv2 enemies
+        if (health == 10 && !finalStageTriggered) {
+            spawnFinalStageElements();
+            finalStageTriggered = true; // Ensure this happens only once
         }
     }
 
@@ -181,5 +189,23 @@ public class RobotBoss extends Actor {
         RobotLv1 robotEnemy2 = new RobotLv1();
         world.addObject(robotEnemy1, 265, 25); // Spawn at (265, 25)
         world.addObject(robotEnemy2, 229, 25); // Spawn at (229, 25)
+    }
+
+    private void spawnFinalStageElements() {
+        World world = getWorld();
+
+        // Spawn platforms
+        Final2StepB platform1 = new Final2StepB();
+        Final2StepB platform2 = new Final2StepB();
+        Final2StepB platform3 = new Final2StepB();
+
+        world.addObject(platform1, 1181, 379);
+        world.addObject(platform2, 1010, 379);
+        world.addObject(platform3, 846, 379);
+
+        // Spawn RobotLv2 enemies
+        RobotLv2 robot1 = new RobotLv2();
+
+        world.addObject(robot1, 1266, 31);
     }
 }

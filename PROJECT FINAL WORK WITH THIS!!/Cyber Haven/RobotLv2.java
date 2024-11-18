@@ -4,7 +4,6 @@ public class RobotLv2 extends Actor {
 
     private int vSpeed = 0;        // Vertical speed for gravity
     private int gravity = 1;       // Gravity force
-
     private int speed = 2;         // Horizontal speed to move toward Cyrus
     private int maxCannonBallHits = 3;  // Number of hits before disappearing
     private int cannonBallHits = 0;  // Counter for cannonball hits
@@ -26,11 +25,6 @@ public class RobotLv2 extends Actor {
                 setLocation(getX() - speed, getY());
             }
         }
-
-        // Jumping behavior: if close to Cyrus, robot should jump to reach him
-        if (Greenfoot.getRandomNumber(100) < 5 && isOnPlatform()) {  // Random jump chance
-            jump();
-        }
     }
 
     private void applyGravity() {
@@ -45,11 +39,6 @@ public class RobotLv2 extends Actor {
     private boolean isOnPlatform() {
         Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
         return platform instanceof Platforms || platform instanceof MapParts;  // Check if standing on a platform or map part
-    }
-
-    private void jump() {
-        vSpeed = -15;  // Set a jump force
-        setLocation(getX(), getY() + vSpeed);  // Apply the jump force
     }
 
     private void checkPlatformCollision() {
