@@ -6,24 +6,24 @@ public class RobotBoss extends Actor {
     private int originalX;
     private boolean movingRight;
     private boolean movePartsBSpawned;
-    private boolean movePartsB2Spawned; // Flag for second platform spawn
+    private boolean movePartsB2Spawned; 
     private boolean isBlinking;
     private long blinkStartTime;
-    private long lastShootTime; // To track the time of the last shot
-    private int hitCount; // To track how many hits the RobotBoss has taken
-    private boolean robotsSummoned; // Flag to ensure robots are only summoned once
-    private boolean finalStageTriggered; // Flag for spawning platforms and robots at 10 health
+    private long lastShootTime; 
+    private boolean robotsSummoned; 
+    private boolean finalStageTriggered; 
+    private boolean finalRemovalTriggered; // New flag for health 6 behavior
 
     public RobotBoss() {
         health = 30;
         movingRight = true;
         movePartsBSpawned = false;
-        movePartsB2Spawned = false; // Initialize second platform spawn flag
+        movePartsB2Spawned = false; 
         isBlinking = false;
         lastShootTime = 0;
-        hitCount = 0; // Initialize hit count
-        robotsSummoned = false; // Initialize robotsSummoned flag
-        finalStageTriggered = false; // Initialize final stage trigger
+        robotsSummoned = false; 
+        finalStageTriggered = false; 
+        finalRemovalTriggered = false; // Initialize the new flag
     }
 
     public void addedToWorld(World world) {
@@ -56,33 +56,34 @@ public class RobotBoss extends Actor {
             updateBlinking();
         }
 
-        // Only start shooting when health is 18 or less, and only shoot once every 3 seconds
         if (health <= 18) {
             shoot();
         }
 
-        // Spawn robots only after the first 3 hits
         if (health == 27 && !robotsSummoned) {
             summonRobots();
-            robotsSummoned = true; // Set the flag to true so robots are only summoned once
+            robotsSummoned = true;
         }
 
-        // At health 15 or less, shoot 1.5 times faster and spawn another MovePartsB
         if (health <= 15) {
             shootFaster();
-            spawnAnotherMovePartsB(); // Ensure it only spawns once
+            spawnAnotherMovePartsB(); 
         }
 
-        // At health 10, spawn 3 platforms and 2 RobotLv2 enemies
         if (health == 10 && !finalStageTriggered) {
             spawnFinalStageElements();
-            finalStageTriggered = true; // Ensure this happens only once
+            finalStageTriggered = true; 
+        }
+
+        if (health == 6 && !finalRemovalTriggered) {
+            startMovePartsBRemoval(); 
+            shootEvenFaster(); 
+            finalRemovalTriggered = true; 
         }
     }
 
     private void takeDamage() {
         health--;
-        hitCount++; // Increment hit count when damage is taken
     }
 
     private void die() {
@@ -110,12 +111,11 @@ public class RobotBoss extends Actor {
     }
 
     private void spawnAnotherMovePartsB() {
-        // Only spawn the second MovePartsB if it hasn't been spawned yet
         if (!movePartsB2Spawned) {
             World world = getWorld();
             MovePartsB movePartsB = new MovePartsB();
-            world.addObject(movePartsB, 697, 313); // Spawn another MovePartsB at the new location
-            movePartsB2Spawned = true; // Mark as spawned to prevent duplication
+            world.addObject(movePartsB, 697, 313);
+            movePartsB2Spawned = true;
         }
     }
 
@@ -150,51 +150,48 @@ public class RobotBoss extends Actor {
 
     private void shoot() {
         long currentTime = System.currentTimeMillis();
-        
-        // Shoot every 3 seconds
         if (currentTime - lastShootTime >= 3000) {
-            List<CyrusPlayer> players = getWorld().getObjects(CyrusPlayer.class);
-            if (!players.isEmpty()) {
-                CyrusPlayer player = players.get(0);
-                BossFightBlast blast = new BossFightBlast();
-                getWorld().addObject(blast, getX(), getY());
-                blast.fireAtPlayer(player);
-            }
-
-            lastShootTime = currentTime; // Update last shoot time
+            fireBlast();
+            lastShootTime = currentTime;
         }
     }
 
     private void shootFaster() {
         long currentTime = System.currentTimeMillis();
-        
-        // Shoot 1.5 times faster, so every 2 seconds
         if (currentTime - lastShootTime >= 2000) {
-            List<CyrusPlayer> players = getWorld().getObjects(CyrusPlayer.class);
-            if (!players.isEmpty()) {
-                CyrusPlayer player = players.get(0);
-                BossFightBlast blast = new BossFightBlast();
-                getWorld().addObject(blast, getX(), getY());
-                blast.fireAtPlayer(player);
-            }
-
-            lastShootTime = currentTime; // Update last shoot time
+            fireBlast();
+            lastShootTime = currentTime;
         }
     }
 
-    // Method to summon robots after the first 3 hits
+    private void shootEvenFaster() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastShootTime >= 50) {
+            fireBlast();
+            lastShootTime = currentTime;
+        }
+    }
+
+    private void fireBlast() {
+        List<CyrusPlayer> players = getWorld().getObjects(CyrusPlayer.class);
+        if (!players.isEmpty()) {
+            CyrusPlayer player = players.get(0);
+            BossFightBlast blast = new BossFightBlast();
+            getWorld().addObject(blast, getX(), getY());
+            blast.fireAtPlayer(player);
+        }
+    }
+
     private void summonRobots() {
         World world = getWorld();
         RobotLv1 robotEnemy1 = new RobotLv1();
         RobotLv1 robotEnemy2 = new RobotLv1();
-        world.addObject(robotEnemy1, 265, 25); // Spawn at (265, 25)
-        world.addObject(robotEnemy2, 229, 25); // Spawn at (229, 25)
+        world.addObject(robotEnemy1, 265, 25);
+        world.addObject(robotEnemy2, 229, 25);
     }
 
     private void spawnFinalStageElements() {
         World world = getWorld();
-
-        // Spawn platforms
         Final2StepB platform1 = new Final2StepB();
         Final2StepB platform2 = new Final2StepB();
         Final2StepB platform3 = new Final2StepB();
@@ -203,9 +200,27 @@ public class RobotBoss extends Actor {
         world.addObject(platform2, 1010, 379);
         world.addObject(platform3, 846, 379);
 
-        // Spawn RobotLv2 enemies
         RobotLv2 robot1 = new RobotLv2();
-
         world.addObject(robot1, 1266, 31);
+    }
+
+    private void startMovePartsBRemoval() {
+        World world = getWorld();
+        List<MovePartsB> movePartsBList = world.getObjects(MovePartsB.class);
+
+        new Thread(() -> {
+            long startTime = System.currentTimeMillis();
+            while (System.currentTimeMillis() - startTime < 3000) {
+                for (MovePartsB part : movePartsBList) {
+                    GreenfootImage image = part.getImage();
+                    image.setTransparency(image.getTransparency() > 0 ? 0 : 255);
+                }
+                Greenfoot.delay(15);
+            }
+
+            for (MovePartsB part : movePartsBList) {
+                world.removeObject(part);
+            }
+        }).start();
     }
 }
