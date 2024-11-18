@@ -70,5 +70,20 @@ public class FinalStage2G extends FinalStageBBG
         addObject(final2StepA5,335,513);
 
         cannon.setLocation(67,457);
+        removeObject(final2StepA4);
+        removeObject(final2StepA3);
+        Final2StepC final2StepC = new Final2StepC();
+        addObject(final2StepC,1345,432);
+        final2StepC.setLocation(1428,429);
+        removeObject(final2StepC);
+        Final2StepB final2StepB = new Final2StepB();
+        addObject(final2StepB,1321,378);
+        Final2StepB final2StepB2 = new Final2StepB();
+        addObject(final2StepB2,1515,379);
+        final2StepB.setLocation(1387,363);
+        final2StepB.setLocation(1339,353);
+        final2StepB.setLocation(1349,378);
+        final2StepB.setLocation(1349,380);
+        final2StepB.setLocation(1349,379);
     }
 }
