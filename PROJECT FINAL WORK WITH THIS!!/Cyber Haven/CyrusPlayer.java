@@ -1,7 +1,6 @@
 import greenfoot.*;
 
-public class CyrusPlayer extends Actor 
-{
+public class CyrusPlayer extends Actor {
     private int speed = 4;          
     private int jumpStrength = -15; 
     private int gravity = 1;        
@@ -15,8 +14,7 @@ public class CyrusPlayer extends Actor
     private CoinCounter counter;
     TutorialStageBG thisGame; 
 
-    public void act() 
-    {
+    public void act() {
         move();
         jump();         
         applyGravity();
@@ -81,7 +79,19 @@ public class CyrusPlayer extends Actor
 
     private boolean isOnPlatform() {
         Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
-        return platform instanceof Platforms || platform instanceof MapParts;
+        if (platform instanceof MapParts) {
+            MapParts mapPart = (MapParts) platform;
+            
+            // Check the active state of TimerBlockA and TimerBlockB
+            if (mapPart instanceof TimerBlockA) {
+                return ((TimerBlockA) mapPart).getIsActive();
+            } else if (mapPart instanceof TimerBlockB) {
+                return ((TimerBlockB) mapPart).getIsActive();
+            } else {
+                return true; // If it's a normal MapPart or Platform, it's a valid platform
+            }
+        }
+        return platform instanceof Platforms;  // For normal platforms
     }
 
     public void jump() {

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=TimerBlockB
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=boolean\ getIsActive()
+comment3.params=active
+comment3.target=void\ setIsActive(boolean)
+comment4.params=blockA
+comment4.target=void\ setBlockA(TimerBlockA)
+numComments=5
