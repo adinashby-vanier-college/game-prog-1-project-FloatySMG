@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=RobotBoss
+comment0.text=\r\n\ A\ robot\ boss\ that\ takes\ damage\ from\ cannonballs.\r\n
+comment1.params=
+comment1.target=RobotBoss()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ takeDamage()
+comment4.params=
+comment4.target=void\ die()
+numComments=5
