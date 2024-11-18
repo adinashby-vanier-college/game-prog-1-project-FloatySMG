@@ -7,8 +7,11 @@ public class MapParts extends Actor {
     
     // Checks if an actor is standing on top of the MapPart
     public boolean isTouchingTop(Actor actor) {
-        return actor.getY() <= getY() - (getImage().getHeight() / 2 + actor.getImage().getHeight() / 2) &&
-               actor.getY() >= getY() - (getImage().getHeight() / 2 + actor.getImage().getHeight());
+        int actorBottom = actor.getY() + actor.getImage().getHeight() / 2;
+        int mapTop = getY() - getImage().getHeight() / 2;
+
+        // Check if actor's bottom is close to the top of MapPart (with tolerance)
+        return actorBottom >= mapTop && actorBottom <= mapTop + 10;  // 10 pixel tolerance
     }
     
     // Checks if an actor is colliding on the sides of the MapPart
@@ -19,7 +22,17 @@ public class MapParts extends Actor {
     
     // Checks if an actor is hitting the bottom of the MapPart
     public boolean isTouchingBottom(Actor actor) {
-        return actor.getY() >= getY() + (getImage().getHeight() / 2 + actor.getImage().getHeight() / 2) &&
-               actor.getY() <= getY() + (getImage().getHeight() / 2 + actor.getImage().getHeight());
+        int actorTop = actor.getY() - actor.getImage().getHeight() / 2;
+        int mapBottom = getY() + getImage().getHeight() / 2;
+
+        // Check if actor's top is close to the bottom of MapPart (with tolerance)
+        return actorTop <= mapBottom && actorTop >= mapBottom - 10;  // 10 pixel tolerance
+    }
+    
+    // Checks if the actor is approaching the platform vertically (for landing)
+    public boolean isApproaching(Actor actor) {
+        // Check if actor is moving downward towards the platform (based on vertical speed)
+        return actor.getY() + actor.getImage().getHeight() / 2 < getY() - getImage().getHeight() / 2
+            && actor.getY() + actor.getImage().getHeight() / 2 > getY() - getImage().getHeight() / 2 - 10;  // Tolerance for vertical movement
     }
 }

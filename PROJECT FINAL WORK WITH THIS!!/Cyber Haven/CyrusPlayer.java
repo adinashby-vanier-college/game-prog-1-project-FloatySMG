@@ -11,12 +11,13 @@ public class CyrusPlayer extends Actor {
     private GreenfootImage walkB;         
     private int frameCounter = 0;         
     private final int SWITCH_INTERVAL = 12; 
-    private CoinCounter counter;
+    private int hoverCounter = 0; // Counter for hover duration
+    private final int HOVER_DURATION = 21; // Number of acts for hovering (0.35 seconds)
     TutorialStageBG thisGame; 
 
     public void act() {
         move();
-        jump();         
+        jump();
         applyGravity();
         checkPlatformCollision();
         checkLevelTransition();
@@ -68,13 +69,11 @@ public class CyrusPlayer extends Actor {
     }
 
     private void applyGravity() {
-        if (!isOnPlatform()) {
+        if (!isOnPlatform() && hoverCounter == 0) {
             vSpeed += gravity;
-            setLocation(getX(), getY() + vSpeed);
-        } else {
-            vSpeed = 0;
-            isJumping = false;
         }
+
+        setLocation(getX(), getY() + vSpeed);
     }
 
     private boolean isOnPlatform() {
@@ -96,9 +95,25 @@ public class CyrusPlayer extends Actor {
 
     public void jump() {
         if ((Greenfoot.isKeyDown("W") || Greenfoot.isKeyDown("Up")) && !isJumping && isOnPlatform()) {
-            vSpeed = jumpStrength;
+            vSpeed = jumpStrength;  // Use the original jump strength for a higher jump
             isJumping = true;
+            hoverCounter = 0;  // Reset hover counter at the start of the jump
             setLocation(getX(), getY() + vSpeed);
+        }
+
+        // Hover functionality at the peak of the jump
+        if (isJumping && (Greenfoot.isKeyDown("W") || Greenfoot.isKeyDown("Up")) && vSpeed >= 0 && hoverCounter < HOVER_DURATION) {
+            vSpeed = 0;
+            hoverCounter++;
+        } else if (hoverCounter >= HOVER_DURATION || (!Greenfoot.isKeyDown("W") && !Greenfoot.isKeyDown("Up"))) {
+            vSpeed += gravity;  // Apply gravity after hover or if the key is not pressed
+        }
+
+        // When the player lands on a platform, stop jumping and reset hover counter
+        if (isOnPlatform()) {
+            vSpeed = 0;
+            isJumping = false;
+            hoverCounter = 0;
         }
     }
 
@@ -120,6 +135,7 @@ public class CyrusPlayer extends Actor {
             setLocation(getX(), platform.getY() - (platform.getImage().getHeight() / 2 + getImage().getHeight() / 2));
             vSpeed = 0;
             isJumping = false;
+            hoverCounter = 0;
         } else if (platform.isTouchingSide(this)) {
             if (getX() < platform.getX()) {
                 setLocation(platform.getX() - platform.getImage().getWidth() / 2 - getImage().getWidth() / 2, getY());
@@ -137,6 +153,7 @@ public class CyrusPlayer extends Actor {
             setLocation(getX(), mapPart.getY() - (mapPart.getImage().getHeight() / 2 + getImage().getHeight() / 2));
             vSpeed = 0;
             isJumping = false;
+            hoverCounter = 0;
         } else if (mapPart.isTouchingSide(this)) {
             if (getX() < mapPart.getX()) {
                 setLocation(mapPart.getX() - mapPart.getImage().getWidth() / 2 - getImage().getWidth() / 2, getY());

@@ -12,8 +12,10 @@ public class Platforms extends Actor {
     
     // Checks if an actor is standing on top of the platform
     public boolean isTouchingTop(Actor actor) {
-        return actor.getY() <= getY() - (getImage().getHeight() / 2 + actor.getImage().getHeight() / 2) &&
-               actor.getY() >= getY() - (getImage().getHeight() / 2 + actor.getImage().getHeight());
+        // Actor's bottom edge is close to platform's top edge
+        int actorBottom = actor.getY() + actor.getImage().getHeight() / 2;
+        int platformTop = getY() - getImage().getHeight() / 2;
+        return actorBottom >= platformTop && actorBottom <= platformTop + 5;  // 5 pixel tolerance
     }
     
     // Checks if an actor is colliding on the sides of the platform
@@ -24,7 +26,8 @@ public class Platforms extends Actor {
     
     // Checks if an actor is hitting the bottom of the platform
     public boolean isTouchingBottom(Actor actor) {
-        return actor.getY() >= getY() + (getImage().getHeight() / 2 + actor.getImage().getHeight() / 2) &&
-               actor.getY() <= getY() + (getImage().getHeight() / 2 + actor.getImage().getHeight());
+        int actorTop = actor.getY() - actor.getImage().getHeight() / 2;
+        int platformBottom = getY() + getImage().getHeight() / 2;
+        return actorTop <= platformBottom && actorTop >= platformBottom - 5;  // 5 pixel tolerance
     }
 }
