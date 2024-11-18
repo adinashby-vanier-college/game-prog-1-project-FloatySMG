@@ -68,7 +68,7 @@ public class CannonBall extends Actor
     // Check if the CannonBall should be removed after 3 seconds of no movement
     private void checkForRemoval()
     {
-        if (timeSinceLastMovement >= 3000) // 3000 milliseconds = 3 seconds
+        if (timeSinceLastMovement >= 1500) // 3000 milliseconds = 3 seconds
         {
             getWorld().removeObject(this);
         }
