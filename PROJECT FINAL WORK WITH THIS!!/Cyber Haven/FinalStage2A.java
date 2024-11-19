@@ -26,5 +26,7 @@ public class FinalStage2A extends FinalStageBBG{
         addObject(cyrusPlayer,167,387);
         cyrusPlayer.setLocation(142,453);
         cyrusPlayer.setLocation(155,459);
+        SceneMessageWelcomeD sceneMessageWelcomeD = new SceneMessageWelcomeD();
+        addObject(sceneMessageWelcomeD,443,102);
     }
 }

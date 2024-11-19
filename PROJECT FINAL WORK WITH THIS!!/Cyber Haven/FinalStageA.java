@@ -71,5 +71,7 @@ public class FinalStageA extends FinalStageABG{
         final1StepA3.setLocation(1530, 397);
         final1StepA3.setLocation(1540, 479);
         removeObject(robotLv1);
+        SceneMessageWelcomeC sceneMessageWelcomeC = new SceneMessageWelcomeC();
+        addObject(sceneMessageWelcomeC,498,103);
     }
 }
