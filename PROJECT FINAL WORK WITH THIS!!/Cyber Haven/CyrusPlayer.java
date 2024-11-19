@@ -77,21 +77,22 @@ public class CyrusPlayer extends Actor {
     }
 
     private boolean isOnPlatform() {
+        // Check directly below the player for any Actor
         Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
-        if (platform instanceof MapParts) {
-            MapParts mapPart = (MapParts) platform;
-            
-            // Check the active state of TimerBlockA and TimerBlockB
-            if (mapPart instanceof TimerBlockA) {
-                return ((TimerBlockA) mapPart).getIsActive();
-            } else if (mapPart instanceof TimerBlockB) {
-                return ((TimerBlockB) mapPart).getIsActive();
-            } else {
-                return true; // If it's a normal MapPart or Platform, it's a valid platform
-            }
+    
+        if (platform instanceof TimerBlockA) {
+            return ((TimerBlockA) platform).getIsActive(); // Active state determines solidity
         }
-        return platform instanceof Platforms;  // For normal platforms
-    }
+        if (platform instanceof TimerBlockB) {
+            return ((TimerBlockB) platform).getIsActive(); // Active state determines solidity
+        }
+        if (platform instanceof Platforms) {
+            return true; // Regular platforms are always solid
+        }
+    
+        return false; // Any other objects are not solid
+    } 
+        
 
     public void jump() {
         if ((Greenfoot.isKeyDown("W") || Greenfoot.isKeyDown("Up")) && !isJumping && isOnPlatform()) {
@@ -189,6 +190,14 @@ public class CyrusPlayer extends Actor {
                 nextWorld = new Level1StageE();
             } else if (currentWorld instanceof Level1StageE) {
                 nextWorld = new FinalStageA();
+            } else if (currentWorld instanceof FinalStageA) {
+                nextWorld = new FinalStageB();
+            } else if (currentWorld instanceof FinalStageB) {
+                nextWorld = new FinalStageC();
+            } else if (currentWorld instanceof FinalStageC) {
+                nextWorld = new FinalStageD();
+            } else if (currentWorld instanceof FinalStageD) {
+                nextWorld = new FinalStageE();
             } else {
                 return;
             }

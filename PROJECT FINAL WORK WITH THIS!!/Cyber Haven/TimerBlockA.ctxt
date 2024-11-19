@@ -8,4 +8,6 @@ comment3.params=active
 comment3.target=void\ setIsActive(boolean)
 comment4.params=blockB
 comment4.target=void\ setBlockB(TimerBlockB)
-numComments=5
+comment5.params=
+comment5.target=boolean\ isSolid()
+numComments=6
