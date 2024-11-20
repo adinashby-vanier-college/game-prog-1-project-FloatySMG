@@ -22,7 +22,10 @@ public class TimerBlockA extends MapParts {
             timer = 0; // Reset timer
             blinkCount = 0; // Reset blink count
         }
-    }
+        if (blockB != null && blockB.getIsActive()){
+            
+        }
+    }   
 
     public boolean getIsActive() {
         return isActive;

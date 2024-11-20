@@ -54,13 +54,34 @@ public class FinalStageB extends FinalStageABG{
         timerBlockA4.setBlockB(timerBlockB4);
         timerBlockB4.setBlockA(timerBlockA4);
 
+        TimerBlockA timerBlockA5 = new TimerBlockA();
+        addObject(timerBlockA5, 1245, 397);
+        TimerBlockB timerBlockB5 = new TimerBlockB();
+        addObject(timerBlockB5, 1243, 265);
+        timerBlockA5.setBlockB(timerBlockB5);
+        timerBlockB5.setBlockA(timerBlockA5);
+
+        TimerBlockA timerBlockA6 = new TimerBlockA();
+        addObject(timerBlockA6, 1246, 141);
+        timerBlockA6.setLocation(1245, 141);
+
         BounceHigh bounceHigh = new BounceHigh();
-        addObject(bounceHigh, 478, 532);
+        addObject(bounceHigh, 479, 349);
+        BounceMedium bounceMedium = new BounceMedium();
+        addObject(bounceMedium, 835, 256);
+        BounceMedium bounceMedium2 = new BounceMedium();
+        addObject(bounceMedium2, 1048, 390);
+
+        Final1StepD final1StepD = new Final1StepD();
+        addObject(final1StepD, 1282, 436);
+        final1StepD.setLocation(1531, 558);
+        final1StepD.setLocation(1454, 530);
         removeObject(timerBlockA4);
         removeObject(timerBlockB4);
-        removeObject(timerBlockB3);
         removeObject(timerBlockA3);
-        removeObject(bounceHigh);
-        addObject(bounceHigh,479,349);
+        removeObject(timerBlockB3);
+        timerBlockB5.setLocation(1211,269);
+        timerBlockB5.setLocation(1220,291);
+        timerBlockB5.setLocation(1245,269);
     }
 }
