@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=MovePartsA
-comment0.text=\r\n\ A\ moving\ platform\ that\ automatically\ moves\ left\ and\ right\ within\ a\ defined\ range.\r\n\ \r\n\ @author\ Your\ Name\r\n\ @version\ 1.0\r\n
 comment1.params=
 comment1.target=MovePartsA()
 comment2.params=

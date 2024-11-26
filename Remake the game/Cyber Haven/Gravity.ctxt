@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=Gravity
+comment1.params=actor\ verticalSpeed
+comment1.target=double\ applyGravity(greenfoot.Actor,\ double)
+numComments=2

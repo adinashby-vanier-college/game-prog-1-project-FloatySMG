@@ -1,4 +1,3 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
 import lang.stride.*;
 import greenfoot.*;
 
@@ -17,8 +16,8 @@ public class StartButton extends MenuButtons
      */
     public StartButton()
     {
-        startImage =  new GreenfootImage("start.png");
-        startHoverImage =  new GreenfootImage("startHover.png");
+        startImage =  new  GreenfootImage("start.png");
+        startHoverImage =  new  GreenfootImage("startHover.png");
         setImage(startImage);
     }
 
@@ -44,7 +43,7 @@ public class StartButton extends MenuButtons
      */
     public void transitionToMovieBPlayWorld()
     {
-        World movieBPlayWorld =  new MovieBPlayWorld();
+        World movieBPlayWorld =  new  MovieBPlayWorld();
         Greenfoot.setWorld(movieBPlayWorld);
     }
 }

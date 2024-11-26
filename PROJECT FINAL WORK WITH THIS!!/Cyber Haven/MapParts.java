@@ -10,8 +10,8 @@ public class MapParts extends Actor {
         int actorBottom = actor.getY() + actor.getImage().getHeight() / 2;
         int mapTop = getY() - getImage().getHeight() / 2;
 
-        // Check if actor's bottom is close to the top of MapPart (with tolerance)
-        return actorBottom >= mapTop && actorBottom <= mapTop + 10;  // 10 pixel tolerance
+        // Increase the tolerance
+        return actorBottom >= mapTop && actorBottom <= mapTop + 15;  // Increased to 15 pixels
     }
     
     // Checks if an actor is colliding on the sides of the MapPart

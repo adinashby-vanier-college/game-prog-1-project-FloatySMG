@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Gravity
+comment1.params=actor
+comment1.target=void\ applyGravity(greenfoot.Actor)
+comment2.params=
+comment2.target=void\ reset()
+comment3.params=speed
+comment3.target=void\ setVSpeed(int)
+comment4.params=
+comment4.target=int\ getVSpeed()
+comment5.params=actor
+comment5.target=void\ stopFalling(greenfoot.Actor)
+numComments=6

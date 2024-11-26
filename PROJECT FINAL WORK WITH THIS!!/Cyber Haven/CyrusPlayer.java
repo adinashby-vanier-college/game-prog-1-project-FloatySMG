@@ -14,6 +14,9 @@ public class CyrusPlayer extends Actor {
     private int hoverCounter = 0; 
     private final int HOVER_DURATION = 21; 
     TutorialStageBG thisGame;
+    private boolean isBouncing;
+    private int bounceTimer = 0;
+    private boolean isHovering = false;
 
     public CyrusPlayer() {
         standingImage = new GreenfootImage("CyrusStand.png");
@@ -24,6 +27,7 @@ public class CyrusPlayer extends Actor {
     }
 
     public void act() {
+        updateBounceTimer();
         move();
         jump();
         applyGravity();
@@ -41,6 +45,16 @@ public class CyrusPlayer extends Actor {
 
     private void scaleImage(GreenfootImage image) {
         image.scale((int)(image.getWidth() * 0.25), (int)(image.getHeight() * 0.25));
+    }
+
+    private void updateBounceTimer() {
+        if (isBouncing) {
+            bounceTimer++;
+        }
+        if (bounceTimer >= 320) {
+            bounceTimer = 0;
+            isBouncing = false;
+        }
     }
 
     private void move() {
@@ -71,7 +85,7 @@ public class CyrusPlayer extends Actor {
     }
 
     private void applyGravity() {
-        if (!isOnPlatform() && hoverCounter == 0) {
+        if (!isHovering && !isOnPlatform()) {
             vSpeed += gravity;
         }
         setLocation(getX(), getY() + vSpeed);
@@ -79,13 +93,10 @@ public class CyrusPlayer extends Actor {
 
     private boolean isOnPlatform() {
         Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Actor.class);
-        if (platform instanceof TimerBlockA) {
-            return ((TimerBlockA) platform).getIsActive();
+        if (platform instanceof MapParts) {
+            return ((MapParts) platform).isTouchingTop(this);
         }
-        if (platform instanceof TimerBlockB) {
-            return ((TimerBlockB) platform).getIsActive();
-        }
-        return platform instanceof Platforms;
+        return false;
     }
 
     public void jump() {
@@ -98,20 +109,24 @@ public class CyrusPlayer extends Actor {
 
         if (isJumping && (Greenfoot.isKeyDown("W") || Greenfoot.isKeyDown("Up")) && vSpeed >= 0 && hoverCounter < HOVER_DURATION) {
             vSpeed = 0;
+            isHovering = true;
             hoverCounter++;
         } else if (hoverCounter >= HOVER_DURATION || (!Greenfoot.isKeyDown("W") && !Greenfoot.isKeyDown("Up"))) {
+            isHovering = false;
             vSpeed += gravity;
         }
 
-        if (isOnPlatform()) {
+        if (isOnPlatform() && !isBouncing) {
             resetJump();
         }
     }
 
-    private void resetJump() {
+    public void resetJump() {
         vSpeed = 0;
         isJumping = false;
         hoverCounter = 0;
+        isHovering = false;
+        isBouncing = false;
     }
 
     private void checkPlatformCollision() {
@@ -191,7 +206,10 @@ public class CyrusPlayer extends Actor {
 
     public void bounce(int strength) {
         vSpeed = -strength;
-        isJumping = true;  // Ensure correct gravity application
+        isBouncing = true;
+        isJumping = true;
+        isHovering = false;
+        hoverCounter = 0;
     }
 
     public int getVSpeed() {
@@ -203,11 +221,19 @@ public class CyrusPlayer extends Actor {
     }
 
     public void bounceMedium() {
-        bounce(17);
+        vSpeed = -17;
+        isBouncing = true;
+        isJumping = true;
+        isHovering = false;
+        hoverCounter = 0;
     }
 
     public void bounceHigh() {
-        bounce(22);
+        vSpeed = -22;
+        isBouncing = true;
+        isJumping = true;
+        isHovering = false;
+        hoverCounter = 0;
     }
 
     public void collectCoin() {
