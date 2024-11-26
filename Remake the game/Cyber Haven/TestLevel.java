@@ -32,5 +32,12 @@ public class TestLevel extends Levels
         addObject(cyrusPlayer,816,566);
         MovePartsA movePartsA = new MovePartsA(150);
         addObject(movePartsA,839,465);
+        bounceHigh.setLocation(438,254);
+        bounceMedium.setLocation(611,297);
+        removeObject(movePartsA);
+        cyrusPlayer.setLocation(463,176);
+        cyrusPlayer.setLocation(552,210);
+        DeathZone deathZone = new DeathZone();
+        addObject(deathZone,777,738);
     }
 }
