@@ -17,6 +17,7 @@ public class TestLevel extends Levels
     {
         prepare();
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -25,5 +26,6 @@ public class TestLevel extends Levels
     {
         TestNPC testNPC = new TestNPC();
         addObject(testNPC,84,139);
+        testNPC.setLocation(553,480);
     }
 }
