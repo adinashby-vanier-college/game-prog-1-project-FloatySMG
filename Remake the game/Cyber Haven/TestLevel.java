@@ -30,5 +30,7 @@ public class TestLevel extends Levels
         addObject(bounceMedium,957,565);
         CyrusPlayer cyrusPlayer = new CyrusPlayer();
         addObject(cyrusPlayer,816,566);
+        MovePartsA movePartsA = new MovePartsA(150);
+        addObject(movePartsA,839,465);
     }
 }

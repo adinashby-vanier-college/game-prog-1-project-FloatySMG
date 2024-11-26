@@ -1,15 +1,11 @@
 #BlueJ class context
 comment0.target=Characters
-comment0.text=\r\n\ A\ superclass\ for\ characters\ with\ shared\ behavior\ such\ as\ falling\ and\ ground\ detection.\r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\r\n\ Common\ behavior\ for\ all\ characters.\r\n
 comment2.params=
 comment2.target=void\ applyGravity()
-comment2.text=\r\n\ Applies\ gravity\ to\ the\ character,\ causing\ it\ to\ fall.\r\n
 comment3.params=
 comment3.target=void\ checkGround()
-comment3.text=\r\n\ Checks\ if\ the\ character\ is\ on\ the\ ground\ and\ adjusts\ accordingly.\r\n
 comment4.params=speed
 comment4.target=void\ setVerticalSpeed(double)
 numComments=5
