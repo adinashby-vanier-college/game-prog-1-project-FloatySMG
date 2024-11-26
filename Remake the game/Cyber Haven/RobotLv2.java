@@ -14,6 +14,6 @@ public class RobotLv2 extends Robots
      */
     public void act()
     {
-        // Add your action code here.
+        super.act(); // Inherit behavior from Robots (and Characters)
     }
 }

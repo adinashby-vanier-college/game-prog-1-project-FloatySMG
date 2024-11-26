@@ -1,17 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class TestNPC extends Characters {
-    private double verticalSpeed = 0;
     private double jumpStrength = -12; // Adjusted jump strength to be reasonable
-    private boolean onGround = false;
     private int jumpCount = 0;
     private final int maxJumps = 2; // Allow double jump
     private boolean jumpKeyPressed = false; // Track if the jump key is held down
 
     public void act() {
+        super.act(); // Use common behavior from Characters
         checkKeys();
-        applyGravity();
-        checkGround();
     }
 
     private void checkKeys() {
@@ -47,20 +44,11 @@ public class TestNPC extends Characters {
         }
     }
 
-    private void applyGravity() {
-        verticalSpeed += 0.98; // Gravity strength
-        setLocation(getX(), getY() + (int) verticalSpeed);
-    }
-
-    private void checkGround() {
-        // Check if the player is on the ground
-        if (getY() >= 600 - getImage().getHeight() / 2) { // Adjust ground level
-            onGround = true;
-            verticalSpeed = 0;
-            setLocation(getX(), 600 - getImage().getHeight() / 2);
+    @Override
+    protected void checkGround() {
+        super.checkGround(); // Retain ground-check behavior
+        if (onGround) {
             jumpCount = 0; // Reset jump count when on the ground
-        } else {
-            onGround = false;
         }
     }
 }

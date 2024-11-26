@@ -1,19 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Robots here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * A generic superclass for all robot characters.
  */
-public class Robots extends Characters
-{
-    /**
-     * Act - do whatever the Robots wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+public class Robots extends Characters {
+    public void act() {
+        super.act(); // Apply gravity and check ground
+        // Additional shared behavior for robots can go here
     }
 }

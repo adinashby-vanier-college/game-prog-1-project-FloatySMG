@@ -14,6 +14,6 @@ public class RobotBoss extends Robots
      */
     public void act()
     {
-        // Add your action code here.
+        super.act(); // Inherit behavior from Robots (and Characters)
     }
 }

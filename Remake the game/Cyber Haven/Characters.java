@@ -1,19 +1,38 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Characters here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * A superclass for characters with shared behavior such as falling and ground detection.
  */
-public class Characters extends Actor
-{
+public class Characters extends Actor {
+    protected double verticalSpeed = 0; // Gravity-affected speed
+    protected boolean onGround = false; // Ground detection
+
     /**
-     * Act - do whatever the Characters wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Common behavior for all characters.
      */
-    public void act()
-    {
-        // Add your action code here.
+    public void act() {
+        applyGravity();
+        checkGround();
+    }
+
+    /**
+     * Applies gravity to the character, causing it to fall.
+     */
+    protected void applyGravity() {
+        verticalSpeed += 0.98; // Gravity strength
+        setLocation(getX(), getY() + (int) verticalSpeed);
+    }
+
+    /**
+     * Checks if the character is on the ground and adjusts accordingly.
+     */
+    protected void checkGround() {
+        if (getY() >= 600 - getImage().getHeight() / 2) { // Adjust ground level as needed
+            onGround = true;
+            verticalSpeed = 0;
+            setLocation(getX(), 600 - getImage().getHeight() / 2);
+        } else {
+            onGround = false;
+        }
     }
 }

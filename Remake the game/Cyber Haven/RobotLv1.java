@@ -1,19 +1,11 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, and MouseInfo)
 
 /**
- * Write a description of class RobotLv1 here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * A basic level 1 robot.
  */
-public class RobotLv1 extends Robots
-{
-    /**
-     * Act - do whatever the RobotLv1 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+public class RobotLv1 extends Robots {
+    public void act() {
+        super.act(); // Inherit behavior from Robots (and Characters)
+        // RobotLv1-specific behavior can be added here
     }
 }
