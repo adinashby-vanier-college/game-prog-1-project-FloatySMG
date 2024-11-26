@@ -6,7 +6,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Characters extends Actor {
     protected double verticalSpeed = 0; // Gravity-affected speed
     protected boolean onGround = false; // Ground detection
-
     /**
      * Common behavior for all characters.
      */
@@ -35,4 +34,10 @@ public class Characters extends Actor {
             onGround = false;
         }
     }
+
+    public void setVerticalSpeed(double speed) {
+        this.verticalSpeed = speed;
+    }
+
+
 }

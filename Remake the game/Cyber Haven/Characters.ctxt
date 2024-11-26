@@ -10,4 +10,6 @@ comment2.text=\r\n\ Applies\ gravity\ to\ the\ character,\ causing\ it\ to\ fall
 comment3.params=
 comment3.target=void\ checkGround()
 comment3.text=\r\n\ Checks\ if\ the\ character\ is\ on\ the\ ground\ and\ adjusts\ accordingly.\r\n
-numComments=4
+comment4.params=speed
+comment4.target=void\ setVerticalSpeed(double)
+numComments=5

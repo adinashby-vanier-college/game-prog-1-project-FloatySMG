@@ -1,19 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class MovingPlatforms here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class MovingPlatforms extends MapParts
 {
-    /**
-     * Act - do whatever the MovingPlatforms wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+    protected int startX, startY;  // Starting position of the platform
+    protected int distance;        // Maximum distance to move
+    protected int moveSpeed = 2;   // Movement speed (customizable)
+
+    // Constructor to initialize the distance (and starting position if needed)
+    public MovingPlatforms(int distance) {
+        this.distance = distance;  // Set the maximum movement distance
+    }
+
+    // The act method could be empty, since actual behavior is defined in subclasses
+    public void act() {
+        // Platform-specific behavior will be defined in subclasses
+    }
+
+    // Abstract movePlatform() method for movement behavior in subclasses
+    protected void movePlatform() {
+        // This will be overridden by subclasses
     }
 }

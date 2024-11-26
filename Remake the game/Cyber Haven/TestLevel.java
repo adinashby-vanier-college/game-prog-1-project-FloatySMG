@@ -24,8 +24,11 @@ public class TestLevel extends Levels
      */
     private void prepare()
     {
-        TestNPC testNPC = new TestNPC();
-        addObject(testNPC,84,139);
-        testNPC.setLocation(553,480);
+        BounceHigh bounceHigh = new BounceHigh();
+        addObject(bounceHigh,649,565);
+        BounceMedium bounceMedium = new BounceMedium();
+        addObject(bounceMedium,957,565);
+        CyrusPlayer cyrusPlayer = new CyrusPlayer();
+        addObject(cyrusPlayer,816,566);
     }
 }
