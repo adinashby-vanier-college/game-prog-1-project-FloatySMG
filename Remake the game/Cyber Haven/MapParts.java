@@ -16,5 +16,6 @@ public class MapParts extends Actor {
         
         // Check if the character is touching the platform from below
         return characterTop >= platformBottom - 5 && characterTop <= platformBottom;
+
     }
 }

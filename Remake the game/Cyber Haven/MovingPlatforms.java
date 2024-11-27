@@ -5,7 +5,6 @@ public class MovingPlatforms extends MapParts {
     protected int distance; // Maximum distance to move
     protected int moveSpeed = 2; // Movement speed (customizable)
     protected boolean movingRight = true; // For horizontal movement
-    protected boolean movingUp = true; // For vertical movement
     private int currentXSpeed = 0; // To track horizontal movement speed
 
     public MovingPlatforms(int distance) {
@@ -18,8 +17,8 @@ public class MovingPlatforms extends MapParts {
     }
 
     public void act() {
-        movePlatform();
-        checkForCharacters();
+        movePlatform();  // Move the platform based on direction and distance
+        checkForCharacters();  // Check if characters are on the platform and move them accordingly
     }
 
     protected void movePlatform() {
@@ -27,12 +26,12 @@ public class MovingPlatforms extends MapParts {
         if (movingRight) {
             setLocation(getX() + moveSpeed, getY());
             if (getX() >= startX + distance) {
-                movingRight = false;
+                movingRight = false; // Change direction
             }
         } else {
             setLocation(getX() - moveSpeed, getY());
             if (getX() <= startX) {
-                movingRight = true;
+                movingRight = true; // Change direction
             }
         }
 
@@ -48,10 +47,15 @@ public class MovingPlatforms extends MapParts {
     private void checkForCharacters() {
         for (Object obj : getObjectsInRange(getImage().getWidth() / 2, Characters.class)) {
             Characters character = (Characters) obj;
-            if (character.getY() >= getY() - getImage().getHeight() / 2
-                && character.getY() <= getY() + getImage().getHeight() / 2) {
-                // If the character is standing on the platform, move it with the platform
+
+            // Check if the character is standing on top of the platform
+            if (isCharacterOnTop(character)) {
+                // If the character is on top of the platform, move it with the platform horizontally
                 character.setLocation(character.getX() + (movingRight ? moveSpeed : -moveSpeed), character.getY());
+                character.setVerticalSpeed(0);  // Prevent falling if the player is on the platform
+                if (!character.onGround) {
+                    character.onGround = true;  // Mark the player as on the platform
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, and MouseInfo)
 
 public class Characters extends Actor {
     protected double verticalSpeed = 0; // Gravity-affected speed
@@ -9,6 +9,7 @@ public class Characters extends Actor {
     public void act() {
         applyGravity();
         checkGroundAndWalls();
+        checkMovingPlatform();
     }
 
     protected void applyGravity() {
@@ -70,7 +71,25 @@ public class Characters extends Actor {
         }
     }
 
+    // Updated to allow platform horizontal movement
     public void setVerticalSpeed(double speed) {
         this.verticalSpeed = speed;
+    }
+
+    protected void checkMovingPlatform() {
+        Actor movingPlatform = getOneObjectAtOffset(0, getImage().getHeight() / 2, MovingPlatforms.class);
+        if (movingPlatform != null && verticalSpeed >= 0) { // Only stand if falling downward
+            MovingPlatforms platform = (MovingPlatforms) movingPlatform;
+            int platformTop = platform.getY() - platform.getImage().getHeight() / 2;
+            int characterBottom = getY() + getImage().getHeight() / 2;
+            if (characterBottom <= platformTop + 5) { // Adjust margin as needed
+                setLocation(getX(), platformTop - getImage().getHeight() / 2);
+                onGround = true;
+                verticalSpeed = 0;
+
+                // Move the character with the platform horizontally
+                setLocation(getX() + platform.getXSpeed(), getY());
+            }
+        }
     }
 }
