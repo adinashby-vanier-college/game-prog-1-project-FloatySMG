@@ -6,6 +6,7 @@ public class MovingPlatforms extends MapParts {
     protected int moveSpeed = 2; // Movement speed (customizable)
     protected boolean movingRight = true; // For horizontal movement
     protected boolean movingUp = true; // For vertical movement
+    private int currentXSpeed = 0; // To track horizontal movement speed
 
     public MovingPlatforms(int distance) {
         this.distance = distance;
@@ -22,7 +23,26 @@ public class MovingPlatforms extends MapParts {
     }
 
     protected void movePlatform() {
-        // To be overridden in subclasses
+        // Horizontal movement
+        if (movingRight) {
+            setLocation(getX() + moveSpeed, getY());
+            if (getX() >= startX + distance) {
+                movingRight = false;
+            }
+        } else {
+            setLocation(getX() - moveSpeed, getY());
+            if (getX() <= startX) {
+                movingRight = true;
+            }
+        }
+
+        // Set the horizontal speed for the platform
+        currentXSpeed = movingRight ? moveSpeed : -moveSpeed;
+    }
+
+    // Function to get the platform's horizontal movement speed
+    public int getXSpeed() {
+        return currentXSpeed;
     }
 
     private void checkForCharacters() {

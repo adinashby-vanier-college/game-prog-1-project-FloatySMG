@@ -45,8 +45,8 @@ public class CyrusPlayer extends Characters {
     }
 
     @Override
-    protected void checkGround() {
-        super.checkGround(); // Retain ground-check behavior from Characters
+    protected void checkGroundAndWalls() {
+        super.checkGroundAndWalls(); // Retain ground-check behavior from Characters
         if (onGround) {
             jumpCount = 0; // Reset jump count when on the ground
         }

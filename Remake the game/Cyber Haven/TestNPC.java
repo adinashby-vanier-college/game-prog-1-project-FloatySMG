@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TestNPC extends Characters {
     private double jumpStrength = -12; // Adjusted jump strength to be reasonable
     private int jumpCount = 0;
-    private final int maxJumps = 2; // Allow double jump
+    private final int maxJumps = 200; // Allow double jump
     private boolean jumpKeyPressed = false; // Track if the jump key is held down
 
     public void act() {
@@ -45,8 +45,8 @@ public class TestNPC extends Characters {
     }
 
     @Override
-    protected void checkGround() {
-        super.checkGround(); // Retain ground-check behavior
+    protected void checkGroundAndWalls() {
+        super.checkGroundAndWalls(); // Retain ground-check behavior
         if (onGround) {
             jumpCount = 0; // Reset jump count when on the ground
         }
