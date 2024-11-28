@@ -32,5 +32,8 @@ public class StartMenu extends World
         CyberHavenTitle cyberHavenTitle = new CyberHavenTitle();
         addObject(cyberHavenTitle,804,136);
         cyberHavenTitle.setLocation(804,136);
+        TutorialButton tutorialButton = new TutorialButton();
+        addObject(tutorialButton,796,513);
+        tutorialButton.setLocation(796,513);
     }
 }

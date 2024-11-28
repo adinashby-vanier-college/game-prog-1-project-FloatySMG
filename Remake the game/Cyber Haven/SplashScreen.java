@@ -27,7 +27,7 @@ public class SplashScreen extends World
        // Show the Splash Screen for a certain amount of time
         timer++; //Increment the timer
        if (timer == 180) { // Check if the timer has reached 180 frames (3 secnds)
-       Greenfoot.setWorld(new StartMenu());
+       Greenfoot.setWorld(new StartMenu()); // Transitions to the StartMenu world
        }
     }
 }

@@ -1,29 +1,22 @@
 import lang.stride.*;
 import greenfoot.*;
 
-/**
- * Write a description of class StartButton here.
- * @author (your name) @version (a version number or a date)
- */
+
 public class StartButton extends MenuButtons
 {
     /* (World, Actor, GreenfootImage, Greenfoot and MouseInfo)*/
     private GreenfootImage startImage;
     private GreenfootImage startHoverImage;
 
-    /**
-     * 
-     */
+
     public StartButton()
     {
-        startImage =  new  GreenfootImage("start.png");
-        startHoverImage =  new  GreenfootImage("startHover.png");
+        // Initialize the button images and sets the default image.
+        startImage =  new  GreenfootImage("StartButton.png"); 
+        startHoverImage =  new  GreenfootImage("StartHoverButton.png");
         setImage(startImage);
     }
 
-    /**
-     * Act - do whatever the StartButton wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
         if (Greenfoot.mouseMoved(this)) {
@@ -33,17 +26,18 @@ public class StartButton extends MenuButtons
             setImage(startImage);
         }
         if (Greenfoot.mouseClicked(this)) {
-            transitionToMovieBPlayWorld();
-            Greenfoot.playSound("mouseclick.wav");
+            transitionToWorldOne();
+            Greenfoot.playSound("startClick.wav");
         }
+  
     }
-
-    /**
-     * 
-     */
-    public void transitionToMovieBPlayWorld()
+   
+    public void transitionToWorldOne()
     {
-        World movieBPlayWorld =  new  MovieBPlayWorld();
-        Greenfoot.setWorld(movieBPlayWorld);
+        // Transition to WorldOne when the button is clicked.
+        World WorldOne =  new  WorldOne();
+        Greenfoot.setWorld(WorldOne);
     }
 }
+        
+    
