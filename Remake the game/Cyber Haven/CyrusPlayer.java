@@ -9,6 +9,7 @@ public class CyrusPlayer extends Characters {
     public void act() {
         super.act(); // Use common behavior from Characters
         checkKeys();
+        checkLevelTransition(); // Check if the player has reached the right side of the screen
     }
 
     private void checkKeys() {
@@ -49,6 +50,25 @@ public class CyrusPlayer extends Characters {
         super.checkGroundAndWalls(); // Retain ground-check behavior
         if (onGround) {
             jumpCount = 0; // Reset jump count when on the ground
+        }
+    }
+
+    // Method to handle level transitions
+    private void checkLevelTransition() {
+        World currentWorld = getWorld();
+        int worldWidth = currentWorld.getWidth();
+        int playerX = getX();
+        
+        // Check if the player has reached the right side of the screen
+        if (playerX >= worldWidth - 1) {
+            if (currentWorld instanceof WorldOneStageA) {
+                // Transition to WorldOneStageB
+                Greenfoot.setWorld(new WorldOneStageB());
+            } else if (currentWorld instanceof WorldOneStageB) {
+                // Transition to WorldOneStageC
+                Greenfoot.setWorld(new WorldOneStageC());
+            }
+            // Add further level transitions as needed, e.g. from WorldOneStageC to the next stage
         }
     }
 }
