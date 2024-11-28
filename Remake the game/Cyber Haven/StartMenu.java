@@ -27,13 +27,13 @@ public class StartMenu extends World
     private void prepare()
     {
         StartButton startButton = new StartButton();
-        addObject(startButton,786,375);
-        startButton.setLocation(786,375);
+        addObject(startButton,800,375);
+        startButton.setLocation(800,375);
         CyberHavenTitle cyberHavenTitle = new CyberHavenTitle();
-        addObject(cyberHavenTitle,804,136);
-        cyberHavenTitle.setLocation(804,136);
+        addObject(cyberHavenTitle,800,136);
+        cyberHavenTitle.setLocation(800,136);
         TutorialButton tutorialButton = new TutorialButton();
         addObject(tutorialButton,796,513);
-        tutorialButton.setLocation(796,513);
+        tutorialButton.setLocation(800,513);
     }
 }

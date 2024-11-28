@@ -1,12 +1,12 @@
 #BlueJ class context
-comment0.target=TutorialButton
+comment0.target=PauseButton
 comment1.params=
-comment1.target=TutorialButton()
+comment1.target=PauseButton()
 comment1.text=\r\n\ Constructor\ -\ Initialize\ the\ button\ images\ and\ sets\ the\ default\ image.\ \r\n
 comment2.params=
 comment2.target=void\ act()
 comment2.text=\r\n\ Act\ -\ Check\ for\ mouse\ interactions\ with\ the\ button.\ Changes\ the\ button\ image\ on\ hover\ and\ handles\ click\ events.\r\n
 comment3.params=
-comment3.target=void\ transitionToMovieBPlayWorld()
-comment3.text=\r\n\ Transition\ to\ MovieBPlayWorld\ when\ the\ button\ is\ clicked.\r\n
+comment3.target=void\ transitionToMenu()
+comment3.text=\r\n\ Transition\ to\ Menu\ when\ the\ button\ is\ clicked.\r\n
 numComments=4

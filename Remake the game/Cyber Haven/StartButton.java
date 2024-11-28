@@ -9,14 +9,20 @@ public class StartButton extends MenuButtons
     private GreenfootImage startHoverImage;
 
 
+    /**
+     * Constructor - Initialize the button images and sets the default image. 
+     */
+    
     public StartButton()
     {
-        // Initialize the button images and sets the default image.
         startImage =  new  GreenfootImage("StartButton.png"); 
         startHoverImage =  new  GreenfootImage("StartHoverButton.png");
         setImage(startImage);
     }
 
+    /**
+     * Act - Check for mouse interactions with the button. Changes the button image on hover and handles click events.
+     */
     public void act()
     {
         if (Greenfoot.mouseMoved(this)) {
@@ -26,17 +32,19 @@ public class StartButton extends MenuButtons
             setImage(startImage);
         }
         if (Greenfoot.mouseClicked(this)) {
-            transitionToWorldOne();
+            transitionToWorldTwo();
             Greenfoot.playSound("startClick.wav");
         }
   
     }
    
-    public void transitionToWorldOne()
+    /**
+     * Transition to WorldOne when the button is clicked.
+     */
+    public void transitionToWorldTwo()
     {
-        // Transition to WorldOne when the button is clicked.
-        World WorldOne =  new  WorldOne();
-        Greenfoot.setWorld(WorldOne);
+        World worldTwo =  new  WorldTwo();
+        Greenfoot.setWorld(worldTwo);
     }
 }
         

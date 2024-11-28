@@ -7,19 +7,20 @@ public class TutorialButton extends MenuButtons
     private GreenfootImage tutorialHoverImage;
 
     /**
-     * 
+     * Constructor - Initialize the button images and sets the default image. 
      */
     public TutorialButton()
     {
-        // Initialize the button images and sets the default image.
         tutorialImage = new GreenfootImage("TutorialButton.png");
         tutorialHoverImage = new GreenfootImage("TutorialHoverButton.png");
         setImage(tutorialImage);
     }
 
+    /**
+     * Act - Check for mouse interactions with the button. Changes the button image on hover and handles click events.
+     */
     public void act()
     {
-        // Check for mouse interactions with the button. Changes the button image on hover and handles click events.
         if (Greenfoot.mouseMoved(this)) {
             setImage(tutorialHoverImage);
         }
@@ -32,9 +33,11 @@ public class TutorialButton extends MenuButtons
         }
     }
 
+    /**
+     * Transition to MovieBPlayWorld when the button is clicked.
+     */
     public void transitionToMovieBPlayWorld()
     {
-        // Transition to MovieBPlayWorld when the button is clicked.
         World movieBPlayWorld =  new  MovieBPlayWorld();
         Greenfoot.setWorld(movieBPlayWorld);
     }
