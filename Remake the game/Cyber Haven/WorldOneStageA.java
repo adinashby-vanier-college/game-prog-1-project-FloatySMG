@@ -47,5 +47,15 @@ public class WorldOneStageA extends WorldOne
         addObject(levelOneStepB3,1549,500);
         LevelOneStepB levelOneStepB4 = new LevelOneStepB();
         addObject(levelOneStepB4,1447,500);
+        LevelOneIntroText levelOneIntroText = new LevelOneIntroText();
+        addObject(levelOneIntroText,342,82);
+        TutorialTextA tutorialTextA = new TutorialTextA();
+        addObject(tutorialTextA,372,196);
+        TutorialTextB tutorialTextB = new TutorialTextB();
+        addObject(tutorialTextB,1073,289);
+        tutorialTextB.setLocation(1057,244);
+        tutorialTextB.setLocation(1096,176);
+        TutorialChokePoint tutorialChokePoint = new TutorialChokePoint();
+        addObject(tutorialChokePoint,1551,353);
     }
 }

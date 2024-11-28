@@ -2,8 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class MovePartsB extends MovingPlatforms {
     private int direction = 1; // 1 = down, -1 = up
-    private int topBoundary = 100; // top
-    private int bottomBoundary = 500; // bottom
+    private int topBoundary = 200; // top
+    private int bottomBoundary = 550; // bottom
 
     @Override
     public void act() {
