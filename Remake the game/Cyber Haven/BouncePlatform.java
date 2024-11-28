@@ -15,10 +15,12 @@ public class BouncePlatform extends MapParts {
         if (character != null) {
             Characters player = (Characters) character;
             
-            // If the player is standing on top of the platform and moving down
-            if (player.getY() + player.getImage().getHeight() / 2 >= getY() - getImage().getHeight() / 2 && player.verticalSpeed >= 0) {
-                // Apply the bounce
-                player.setVerticalSpeed(bounceStrength);  // Use the correct setter method
+            // Check if the player is falling (verticalSpeed > 0) and standing on top of the platform
+            if (player.getY() + player.getImage().getHeight() / 2 >= getY() - getImage().getHeight() / 2
+                && player.verticalSpeed >= 0) {
+                
+                // Apply the bounce if the player is above the platform and falling
+                player.verticalSpeed = bounceStrength;  // Apply bounce directly to verticalSpeed
                 player.setLocation(player.getX(), getY() - getImage().getHeight() / 2 - player.getImage().getHeight() / 2);
             }
         }

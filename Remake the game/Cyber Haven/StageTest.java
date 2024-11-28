@@ -25,5 +25,7 @@ public class StageTest extends WorldOne
     private void prepare()
     {
 
+        MovePartsA movePartsA = new MovePartsA();
+        addObject(movePartsA,937,306);
     }
 }

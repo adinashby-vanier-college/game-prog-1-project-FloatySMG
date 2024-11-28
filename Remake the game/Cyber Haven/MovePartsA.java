@@ -1,46 +1,46 @@
+// MovePartsA.java (horizontal moving platform)
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class MovePartsA extends MovingPlatforms {
-    private boolean movingRight = true; // Track horizontal movement direction
-    private int initialX; // Initial X position
-    private int initialY; // Initial Y position
-
-    public MovePartsA(int distance) {
-        super(distance); // Initialize with distance
-    }
+    private int leftBound;              // Left boundary of the platform
+    private int rightBound;             // Right boundary of the platform
+    private boolean movingRight = true; // Direction flag to track movement
 
     @Override
     public void act() {
-        if (initialX == 0 && initialY == 0) {
-            initialX = getX(); // Store initial position when platform is first added
-            initialY = getY();
+        // Set initial boundaries when first act cycle runs
+        if (leftBound == 0 && rightBound == 0) {
+            leftBound = getX() - 100;   // Move 100 pixels to the left from initial position
+            rightBound = getX() + 100;  // Move 100 pixels to the right from initial position
         }
-        movePlatform(); // Move platform horizontally
-        checkForCharacters(); // Check if any characters are standing on the platform
+
+        // Move platform horizontally
+        movePlatform();
+
+        // Move characters with the platform
+        movePlayerWithPlatform();
     }
 
-    @Override
-    protected void movePlatform() {
-        // Move right
+    public void movePlatform() {
         if (movingRight) {
-            setLocation(getX() + moveSpeed, getY());
-            if (getX() >= initialX + distance) {
-                movingRight = false; // Change direction
+            setLocation(getX() + speed, getY()); // Move right
+            if (getX() >= rightBound) {
+                movingRight = false;  // Change direction to left when reaching right boundary
             }
-        }
-        // Move left
-        else {
-            setLocation(getX() - moveSpeed, getY());
-            if (getX() <= initialX - distance) {
-                movingRight = true; // Change direction
+        } else {
+            setLocation(getX() - speed, getY()); // Move left
+            if (getX() <= leftBound) {
+                movingRight = true;  // Change direction to right when reaching left boundary
             }
         }
     }
 
-    private void checkForCharacters() {
-        // Check if any characters are standing on the platform
-        for (Actor actor : getIntersectingObjects(Characters.class)) {
-            actor.setLocation(actor.getX() + moveSpeed * (movingRight ? 1 : -1), actor.getY());
+    private void movePlayerWithPlatform() {
+        // Detect if a character is standing on the platform
+        CyrusPlayer player = (CyrusPlayer) getOneObjectAtOffset(0, -getImage().getHeight() / 2 - 1, CyrusPlayer.class);
+        if (player != null) {
+            // Move the character along with the platform
+            player.setLocation(player.getX() + (movingRight ? speed : -speed), player.getY());
         }
     }
 }

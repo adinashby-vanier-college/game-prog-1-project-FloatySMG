@@ -36,8 +36,6 @@ public class WorldOneStageA extends WorldOne
         addObject(deathZone,791,941);
         WorldOnePlatformC worldOnePlatformC = new WorldOnePlatformC();
         addObject(worldOnePlatformC,617,443);
-        MovePartsB movePartsB = new MovePartsB(50);
-        addObject(movePartsB,835,330);
         WorldOnePlatformC worldOnePlatformC2 = new WorldOnePlatformC();
         addObject(worldOnePlatformC2,1077,449);
     }

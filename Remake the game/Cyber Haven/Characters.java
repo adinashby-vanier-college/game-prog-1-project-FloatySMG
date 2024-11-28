@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Characters extends Actor {
     protected double verticalSpeed = 0; // Gravity-affected speed
@@ -9,7 +9,6 @@ public class Characters extends Actor {
     public void act() {
         applyGravity();
         checkGroundAndWalls();
-        checkMovingPlatform();
     }
 
     protected void applyGravity() {
@@ -26,18 +25,17 @@ public class Characters extends Actor {
     }
 
     protected boolean checkGroundCollision() {
-        // Reset onGround initially
         onGround = false;
 
         // Check for platform collision directly below (ground check)
-        Actor platformBelow = getOneObjectAtOffset(0, getImage().getHeight() / 2, Platforms.class);
-        if (platformBelow != null && verticalSpeed >= 0) { // Only stand if falling downward
+        Actor platformBelow = getOneObjectAtOffset(0, getImage().getHeight() / 2, MapParts.class);
+
+        if (platformBelow != null) {
             int platformTop = platformBelow.getY() - platformBelow.getImage().getHeight() / 2;
             int characterBottom = getY() + getImage().getHeight() / 2;
 
             // Only treat as ground if character's bottom is slightly above the platform's top
             if (characterBottom <= platformTop + 5) { // Adjust margin as needed
-                // Adjust position to the top of the platform
                 setLocation(getX(), platformTop - getImage().getHeight() / 2);
                 onGround = true;
                 verticalSpeed = 0;
@@ -48,9 +46,9 @@ public class Characters extends Actor {
     }
 
     protected void checkGroundAndWalls() {
-        // Side collision detection
-        Actor platformLeft = getOneObjectAtOffset(-getImage().getWidth() / 2, 0, Platforms.class);
-        Actor platformRight = getOneObjectAtOffset(getImage().getWidth() / 2, 0, Platforms.class);
+        // Side collision detection (left and right movement)
+        Actor platformLeft = getOneObjectAtOffset(-getImage().getWidth() / 2, 0, MapParts.class);
+        Actor platformRight = getOneObjectAtOffset(getImage().getWidth() / 2, 0, MapParts.class);
 
         if (platformLeft != null) {
             // Prevent moving into the platform from the left
@@ -71,25 +69,8 @@ public class Characters extends Actor {
         }
     }
 
-    // Updated to allow platform horizontal movement
+    // Updated to allow vertical movement with gravity
     public void setVerticalSpeed(double speed) {
         this.verticalSpeed = speed;
-    }
-
-    protected void checkMovingPlatform() {
-        Actor movingPlatform = getOneObjectAtOffset(0, getImage().getHeight() / 2, MovingPlatforms.class);
-        if (movingPlatform != null && verticalSpeed >= 0) { // Only stand if falling downward
-            MovingPlatforms platform = (MovingPlatforms) movingPlatform;
-            int platformTop = platform.getY() - platform.getImage().getHeight() / 2;
-            int characterBottom = getY() + getImage().getHeight() / 2;
-            if (characterBottom <= platformTop + 5) { // Adjust margin as needed
-                setLocation(getX(), platformTop - getImage().getHeight() / 2);
-                onGround = true;
-                verticalSpeed = 0;
-
-                // Move the character with the platform horizontally
-                setLocation(getX() + platform.getXSpeed(), getY());
-            }
-        }
     }
 }

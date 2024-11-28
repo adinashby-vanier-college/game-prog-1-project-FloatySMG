@@ -10,6 +10,4 @@ comment4.params=
 comment4.target=void\ checkGroundAndWalls()
 comment5.params=speed
 comment5.target=void\ setVerticalSpeed(double)
-comment6.params=
-comment6.target=void\ checkMovingPlatform()
-numComments=7
+numComments=6

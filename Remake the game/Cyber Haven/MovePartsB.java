@@ -1,46 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class MovePartsB extends MovingPlatforms {
-    private boolean movingUp = true; // Track vertical movement direction
-    private int initialX; // Initial X position
-    private int initialY; // Initial Y position
-
-    public MovePartsB(int distance) {
-        super(distance); // Initialize with distance
-    }
+    private int direction = 1; // 1 = down, -1 = up
+    private int topBoundary = 100; // top
+    private int bottomBoundary = 500; // bottom
 
     @Override
     public void act() {
-        if (initialX == 0 && initialY == 0) {
-            initialX = getX(); // Store initial position when platform is first added
-            initialY = getY();
+        // move vertical
+        if (getY() >= bottomBoundary || getY() <= topBoundary) {
+            direction *= -1; // reverse
         }
-        movePlatform(); // Move platform vertically
-        checkForCharacters(); // Check if any characters are standing on the platform
+        // move vertical
+        movePlatform(0, speed * direction); // vertical
+        checkIfCharacterIsOnTop();
     }
 
-    @Override
-    protected void movePlatform() {
-        // Move up
-        if (movingUp) {
-            setLocation(getX(), getY() - moveSpeed);
-            if (getY() <= initialY - distance) {
-                movingUp = false; // Change direction
+    private void checkIfCharacterIsOnTop() {
+        // check is player is on
+        for (Object obj : getWorld().getObjects(Characters.class)) {
+            Characters character = (Characters) obj;
+            if (isCharacterOnTop(character)) {
+                // update character location
+                character.setLocation(character.getX(), getY());
             }
-        }
-        // Move down
-        else {
-            setLocation(getX(), getY() + moveSpeed);
-            if (getY() >= initialY + distance) {
-                movingUp = true; // Change direction
-            }
-        }
-    }
-
-    private void checkForCharacters() {
-        // Check if any characters are standing on the platform
-        for (Actor actor : getIntersectingObjects(Characters.class)) {
-            actor.setLocation(actor.getX(), actor.getY() + moveSpeed * (movingUp ? -1 : 1));
         }
     }
 }

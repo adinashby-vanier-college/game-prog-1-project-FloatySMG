@@ -1,15 +1,7 @@
 #BlueJ class context
 comment0.target=MovingPlatforms
-comment1.params=distance
-comment1.target=MovingPlatforms(int)
-comment2.params=world
-comment2.target=void\ addedToWorld(greenfoot.World)
-comment3.params=
-comment3.target=void\ act()
-comment4.params=
-comment4.target=void\ movePlatform()
-comment5.params=
-comment5.target=int\ getXSpeed()
-comment6.params=
-comment6.target=void\ checkForCharacters()
-numComments=7
+comment1.params=
+comment1.target=void\ act()
+comment2.params=dx\ dy
+comment2.target=void\ movePlatform(int,\ int)
+numComments=3
