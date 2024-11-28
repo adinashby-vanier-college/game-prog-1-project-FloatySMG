@@ -24,19 +24,28 @@ public class WorldOneStageA extends WorldOne
      */
     private void prepare()
     {
-        WorldOnePlatformB worldOnePlatformB = new WorldOnePlatformB();
-        addObject(worldOnePlatformB,78,498);
-        WorldOnePlatformA worldOnePlatformA = new WorldOnePlatformA();
-        addObject(worldOnePlatformA,296,496);
-        WorldOnePlatformA worldOnePlatformA2 = new WorldOnePlatformA();
-        addObject(worldOnePlatformA2,395,496);
         CyrusPlayer cyrusPlayer = new CyrusPlayer();
         addObject(cyrusPlayer,76,190);
         DeathZone deathZone = new DeathZone();
-        addObject(deathZone,791,941);
-        WorldOnePlatformC worldOnePlatformC = new WorldOnePlatformC();
-        addObject(worldOnePlatformC,617,443);
-        WorldOnePlatformC worldOnePlatformC2 = new WorldOnePlatformC();
-        addObject(worldOnePlatformC2,1077,449);
+        addObject(deathZone,991,941);
+        LevelOneStepF levelOneStepF = new LevelOneStepF();
+        addObject(levelOneStepF,84,497);
+        LevelOneStepB levelOneStepB = new LevelOneStepB();
+        addObject(levelOneStepB,294,517);
+        LevelOneStepB levelOneStepB2 = new LevelOneStepB();
+        addObject(levelOneStepB2,395,517);
+        deathZone.setLocation(617,560);
+        LevelOneStepA levelOneStepA = new LevelOneStepA();
+        addObject(levelOneStepA,617,560);
+        LevelOneStepA levelOneStepA2 = new LevelOneStepA();
+        addObject(levelOneStepA2,763,525);
+        LevelOneStepA levelOneStepA3 = new LevelOneStepA();
+        addObject(levelOneStepA3,903,502);
+        LevelOneStepF levelOneStepF2 = new LevelOneStepF();
+        addObject(levelOneStepF2,1218,506);
+        LevelOneStepB levelOneStepB3 = new LevelOneStepB();
+        addObject(levelOneStepB3,1549,500);
+        LevelOneStepB levelOneStepB4 = new LevelOneStepB();
+        addObject(levelOneStepB4,1447,500);
     }
 }
