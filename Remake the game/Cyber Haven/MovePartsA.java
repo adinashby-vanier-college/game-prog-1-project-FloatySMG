@@ -37,7 +37,7 @@ public class MovePartsA extends MovingPlatforms {
 
     private void movePlayerWithPlatform() {
         // Detect if a character is standing on the platform
-        CyrusPlayer player = (CyrusPlayer) getOneObjectAtOffset(0, -getImage().getHeight() / 2 - 1, CyrusPlayer.class);
+        Characters player = (Characters) getOneObjectAtOffset(0, -getImage().getHeight() / 2 - 1, Characters.class);
         if (player != null) {
             // Move the character along with the platform
             player.setLocation(player.getX() + (movingRight ? speed : -speed), player.getY());
