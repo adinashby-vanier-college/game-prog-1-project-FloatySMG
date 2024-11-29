@@ -91,7 +91,9 @@ public class CyrusPlayer extends Characters {
             } else if (currentWorld instanceof WorldThreeStageD) {
                 Greenfoot.setWorld(new WorldThreeStageE());
             } else if (currentWorld instanceof WorldThreeStageE) {
-                Greenfoot.setWorld(new WorldTwoStageF());
+                Greenfoot.setWorld(new WorldThreeStageF());
+            } else if (currentWorld instanceof WorldThreeStageF) {
+                Greenfoot.setWorld(new WorldFourStageA());
             }
         }
     }

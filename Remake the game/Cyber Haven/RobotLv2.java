@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class RobotLv2 extends Robots {
-    private final int speed = 4; // Faster speed for level 2 robot
+    private final int speed = 3; // Faster speed for level 2 robot
     private final int ATTACK_RANGE = 800; // Distance within which the robot will attack
 
     public void act() {

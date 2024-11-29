@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=LevelThreeStepE
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ LevelThreeStepE\ here.\r\n\ \r\n\ @author\ \r\n\ @version\ \r\n
+comment1.params=
+comment1.target=LevelThreeStepE()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ LevelThreeStepE\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ scaleImage()
+numComments=4
