@@ -30,5 +30,7 @@ public class WorldThreeStageC extends WorldThree
         addObject(levelThreeStepA,61,412);
         CyrusPlayer cyrusPlayer = new CyrusPlayer();
         addObject(cyrusPlayer,37,196);
+        DeathZone deathZone = new DeathZone();
+        addObject(deathZone,771,582);
     }
 }
