@@ -68,12 +68,18 @@ public class CyrusPlayer extends Characters {
             } else if (currentWorld instanceof WorldOneStageC) {
                 Greenfoot.setWorld(new WorldOneStageD());
             } else if (currentWorld instanceof WorldOneStageD) {
-                Greenfoot.setWorld(new WorldOneStageA());
+                Greenfoot.setWorld(new WorldTwoStageA());
             } else if (currentWorld instanceof WorldTwoStageA) {
                 Greenfoot.setWorld(new WorldTwoStageB());
             } else if (currentWorld instanceof WorldTwoStageB) {
                 Greenfoot.setWorld(new WorldTwoStageC());
-        }
+            } else if (currentWorld instanceof WorldTwoStageC) {
+                Greenfoot.setWorld(new WorldTwoStageD());
+            } else if (currentWorld instanceof WorldTwoStageD) {
+                Greenfoot.setWorld(new WorldTwoStageE());
+            } else if (currentWorld instanceof WorldTwoStageE) {
+                Greenfoot.setWorld(new WorldTwoStageF());
         }
     }
-}
+    }
+} 

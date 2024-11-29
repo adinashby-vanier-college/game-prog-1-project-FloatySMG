@@ -51,5 +51,8 @@ public class WorldTwoStageA extends WorldTwo
         addObject(bounceMedium5,1191,486);
         BounceMedium bounceMedium6 = new BounceMedium();
         addObject(bounceMedium6,1350,377);
+        deathZone.setLocation(1452,554);
+        CannonBackgroud cannonBackgroud = new CannonBackgroud();
+        addObject(cannonBackgroud,1452,554);
     }
 }
