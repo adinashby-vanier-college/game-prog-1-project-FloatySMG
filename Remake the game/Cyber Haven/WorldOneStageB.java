@@ -70,5 +70,9 @@ public class WorldOneStageB extends WorldOne
         levelOneStepB6.setLocation(1533,507);
         LevelOneStepB levelOneStepB7 = new LevelOneStepB();
         addObject(levelOneStepB7,1533,296);
+        TutorialChokePoint tutorialChokePoint = new TutorialChokePoint();
+        addObject(tutorialChokePoint,1533,162);
+        DeathZone deathZone = new DeathZone();
+        addObject(deathZone,723,589);
     }
 }

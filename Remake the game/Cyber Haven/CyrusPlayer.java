@@ -62,13 +62,18 @@ public class CyrusPlayer extends Characters {
         // Check if the player has reached the right side of the screen
         if (playerX >= worldWidth - 1) {
             if (currentWorld instanceof WorldOneStageA) {
-                // Transition to WorldOneStageB
                 Greenfoot.setWorld(new WorldOneStageB());
             } else if (currentWorld instanceof WorldOneStageB) {
-                // Transition to WorldOneStageC
                 Greenfoot.setWorld(new WorldOneStageC());
-            }
-            // Add further level transitions as needed, e.g. from WorldOneStageC to the next stage
+            } else if (currentWorld instanceof WorldOneStageC) {
+                Greenfoot.setWorld(new WorldOneStageD());
+            } else if (currentWorld instanceof WorldOneStageD) {
+                Greenfoot.setWorld(new WorldOneStageA());
+            } else if (currentWorld instanceof WorldTwoStageA) {
+                Greenfoot.setWorld(new WorldTwoStageB());
+            } else if (currentWorld instanceof WorldTwoStageB) {
+                Greenfoot.setWorld(new WorldTwoStageC());
+        }
         }
     }
 }
