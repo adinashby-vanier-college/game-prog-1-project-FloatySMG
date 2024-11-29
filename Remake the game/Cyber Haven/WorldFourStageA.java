@@ -57,5 +57,7 @@ public class WorldFourStageA extends WorldFour
         addObject(cyrusPlayer2,35,369);
         DeathZone deathZone = new DeathZone();
         addObject(deathZone,880,586);
+        cyrusPlayer2.setLocation(169,369);
+        cyrusPlayer2.setLocation(154,372);
     }
 }
