@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=CannonBall
+comment1.params=
+comment1.target=CannonBall()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=newValue
+comment3.target=void\ setVelocity(Vector2D)
+comment4.params=
+comment4.target=double\ getPreviousY()
+comment5.params=
+comment5.target=void\ checkForRemoval()
+numComments=6
