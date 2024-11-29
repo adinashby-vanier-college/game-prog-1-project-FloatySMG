@@ -1,24 +1,26 @@
-import greenfoot.Actor;  
-import greenfoot.Greenfoot;  
-import greenfoot.GreenfootImage;  
-import greenfoot.World;  
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class RobotLv1 extends Robots {
-    private final int speed = 2; // Average speed for level 1 robot
+    private final int speed = 1; // Average speed for level 1 robot
+    private final int ATTACK_RANGE = 600; // Distance within which the robot will attack
 
     public void act() {
         super.act(); // Inherit behavior from Robots (and Characters)
         followPlayer();
         stopAtPlatformEdge();
+        checkCyrusCollision(); // Check if touched CyrusPlayer
     }
 
     private void followPlayer() {
         CyrusPlayer player = (CyrusPlayer) getWorld().getObjects(CyrusPlayer.class).get(0);
         if (player != null) {
-            if (getX() < player.getX()) {
-                setLocation(getX() + speed, getY());
-            } else if (getX() > player.getX()) {
-                setLocation(getX() - speed, getY());
+            int distance = (int) Math.hypot(getX() - player.getX(), getY() - player.getY());
+            if (distance < ATTACK_RANGE) {
+                if (getX() < player.getX()) {
+                    setLocation(getX() + speed, getY());
+                } else if (getX() > player.getX()) {
+                    setLocation(getX() - speed, getY());
+                }
             }
         }
     }
@@ -34,6 +36,23 @@ public class RobotLv1 extends Robots {
                 // Stop movement if at the edge
                 return;
             }
+        }
+    }
+    
+    private void checkCyrusCollision() {
+        if (isTouching(CyrusPlayer.class)) {
+            resetLevel();
+        }
+    }
+    
+    private void resetLevel() {
+        // Get the current world and reset it
+        World currentWorld = getWorld();
+        try {
+            World newWorld = currentWorld.getClass().getConstructor().newInstance();
+            Greenfoot.setWorld(newWorld); // Restart the current level
+        } catch (Exception e) {
+            System.out.println("Error resetting level: " + e.getMessage());
         }
     }
 }

@@ -6,6 +6,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Robots extends Characters {
     public void act() {
         super.act(); // Apply gravity and check ground
-        // Additional shared behavior for robots can go here
+        checkCyrusCollision(); // Check if touched CyrusPlayer
+    }
+    
+    private void checkCyrusCollision() {
+        if (isTouching(CyrusPlayer.class)) {
+            resetLevel();
+        }
+    }
+    
+    private void resetLevel() {
+        // Get the current world and reset it
+        World currentWorld = getWorld();
+        try {
+            World newWorld = currentWorld.getClass().getConstructor().newInstance();
+            Greenfoot.setWorld(newWorld); // Restart the current level
+        } catch (Exception e) {
+            System.out.println("Error resetting level: " + e.getMessage());
+        }
     }
 }

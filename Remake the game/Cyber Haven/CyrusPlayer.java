@@ -10,6 +10,7 @@ public class CyrusPlayer extends Characters {
         super.act(); // Use common behavior from Characters
         checkKeys();
         checkLevelTransition(); // Check if the player has reached the right side of the screen
+        checkRobotCollision(); // Check if touched by a robot
     }
 
     private void checkKeys() {
@@ -92,6 +93,23 @@ public class CyrusPlayer extends Characters {
             } else if (currentWorld instanceof WorldThreeStageE) {
                 Greenfoot.setWorld(new WorldTwoStageF());
             }
+        }
+    }
+
+    private void checkRobotCollision() {
+        if (isTouching(Robots.class)) {
+            resetLevel();
+        }
+    }
+
+    private void resetLevel() {
+        // Get the current world and reset it
+        World currentWorld = getWorld();
+        try {
+            World newWorld = currentWorld.getClass().getConstructor().newInstance();
+            Greenfoot.setWorld(newWorld); // Restart the current level
+        } catch (Exception e) {
+            System.out.println("Error resetting level: " + e.getMessage());
         }
     }
 }
