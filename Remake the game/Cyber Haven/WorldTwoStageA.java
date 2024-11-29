@@ -54,5 +54,13 @@ public class WorldTwoStageA extends WorldTwo
         deathZone.setLocation(1452,554);
         CannonBackgroud cannonBackgroud = new CannonBackgroud();
         addObject(cannonBackgroud,1452,554);
+        CannonBackgroud cannonBackgroud2 = new CannonBackgroud();
+        addObject(cannonBackgroud2,104,192);
+        cyrusPlayer.setLocation(141,193);
+        cannonBackgroud2.setLocation(93,194);
+        cyrusPlayer.setLocation(145,179);
+        cyrusPlayer.setLocation(32,178);
+        removeObject(cyrusPlayer);
+        addObject(cyrusPlayer,33,184);
     }
 }
