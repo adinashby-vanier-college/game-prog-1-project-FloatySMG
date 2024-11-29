@@ -26,19 +26,19 @@ public class Characters extends Actor {
 
     protected boolean checkGroundCollision() {
         onGround = false;
-
+    
         // Check for platform collision directly below (ground check)
         Actor platformBelow = getOneObjectAtOffset(0, getImage().getHeight() / 2, MapParts.class);
-
+    
         if (platformBelow != null) {
             int platformTop = platformBelow.getY() - platformBelow.getImage().getHeight() / 2;
             int characterBottom = getY() + getImage().getHeight() / 2;
-
+    
             // Only treat as ground if character's bottom is slightly above the platform's top
             if (characterBottom <= platformTop + 5) { // Adjust margin as needed
                 setLocation(getX(), platformTop - getImage().getHeight() / 2);
                 onGround = true;
-                verticalSpeed = 0;
+                verticalSpeed = 0; // Stop falling
                 return true; // Collision detected
             }
         }
@@ -49,22 +49,37 @@ public class Characters extends Actor {
         // Side collision detection (left and right movement)
         Actor platformLeft = getOneObjectAtOffset(-getImage().getWidth() / 2, 0, MapParts.class);
         Actor platformRight = getOneObjectAtOffset(getImage().getWidth() / 2, 0, MapParts.class);
-
-        if (platformLeft != null) {
-            // Prevent moving into the platform from the left
-            int platformRightEdge = platformLeft.getX() + platformLeft.getImage().getWidth() / 2;
-            int characterLeftEdge = getX() - getImage().getWidth() / 2;
-
-            if (characterLeftEdge <= platformRightEdge) {
-                setLocation(platformRightEdge + getImage().getWidth() / 2, getY());
+        
+        // Prevent falling off platforms (checking ahead of the character)
+        if (Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("right")) {
+            // Check if there is a platform ahead (right side)
+            Actor platformAhead = getOneObjectAtOffset(getImage().getWidth() / 2, -getImage().getHeight() / 2, MapParts.class);
+            if (platformAhead == null) {  // No platform ahead, prevent movement
+                // Stop moving right if no platform is detected ahead
+                setLocation(getX(), getY());
+            } else if (platformRight != null) {
+                // If there's a platform to the right, allow movement
+                int platformLeftEdge = platformRight.getX() - platformRight.getImage().getWidth() / 2;
+                int characterRightEdge = getX() + getImage().getWidth() / 2;
+                if (characterRightEdge >= platformLeftEdge) {
+                    setLocation(platformLeftEdge - getImage().getWidth() / 2, getY());
+                }
             }
-        } else if (platformRight != null) {
-            // Prevent moving into the platform from the right
-            int platformLeftEdge = platformRight.getX() - platformRight.getImage().getWidth() / 2;
-            int characterRightEdge = getX() + getImage().getWidth() / 2;
-
-            if (characterRightEdge >= platformLeftEdge) {
-                setLocation(platformLeftEdge - getImage().getWidth() / 2, getY());
+        }
+    
+        if (Greenfoot.isKeyDown("a") || Greenfoot.isKeyDown("left")) {
+            // Check if there is a platform ahead (left side)
+            Actor platformAhead = getOneObjectAtOffset(-getImage().getWidth() / 2, -getImage().getHeight() / 2, MapParts.class);
+            if (platformAhead == null) {  // No platform ahead, prevent movement
+                // Stop moving left if no platform is detected ahead
+                setLocation(getX(), getY());
+            } else if (platformLeft != null) {
+                // If there's a platform to the left, allow movement
+                int platformRightEdge = platformLeft.getX() + platformLeft.getImage().getWidth() / 2;
+                int characterLeftEdge = getX() - getImage().getWidth() / 2;
+                if (characterLeftEdge <= platformRightEdge) {
+                    setLocation(platformRightEdge + getImage().getWidth() / 2, getY());
+                }
             }
         }
     }

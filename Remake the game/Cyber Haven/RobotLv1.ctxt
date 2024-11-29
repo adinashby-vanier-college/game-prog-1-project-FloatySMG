@@ -1,6 +1,9 @@
 #BlueJ class context
 comment0.target=RobotLv1
-comment0.text=\r\n\ A\ basic\ level\ 1\ robot.\r\n
 comment1.params=
 comment1.target=void\ act()
-numComments=2
+comment2.params=
+comment2.target=void\ followPlayer()
+comment3.params=
+comment3.target=void\ stopAtPlatformEdge()
+numComments=4

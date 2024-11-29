@@ -13,9 +13,11 @@ public class DeathZone extends Actor {
     }
 
     private void checkForDeath() {
-        // Check if any Characters are touching the DeathZone
-        if (isTouching(Characters.class)) {
+        // Check if CyrusPlayer or any character is touching the DeathZone
+        if (isTouching(CyrusPlayer.class)) {
             resetLevel();
+        } else if (isTouching(Characters.class)) {
+            removeTouching(Characters.class);
         }
     }
 

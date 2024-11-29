@@ -1,19 +1,39 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.Actor;  
+import greenfoot.Greenfoot;  
+import greenfoot.GreenfootImage;  
+import greenfoot.World;  
 
-/**
- * Write a description of class RobotLv2 here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class RobotLv2 extends Robots
-{
-    /**
-     * Act - do whatever the RobotLv2 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
+public class RobotLv2 extends Robots {
+    private final int speed = 5; // Faster speed for level 2 robot
+
+    public void act() {
         super.act(); // Inherit behavior from Robots (and Characters)
+        followPlayer();
+        stopAtPlatformEdge();
+    }
+
+    private void followPlayer() {
+        CyrusPlayer player = (CyrusPlayer) getWorld().getObjects(CyrusPlayer.class).get(0);
+        if (player != null) {
+            if (getX() < player.getX()) {
+                setLocation(getX() + speed, getY());
+            } else if (getX() > player.getX()) {
+                setLocation(getX() - speed, getY());
+            }
+        }
+    }
+
+    private void stopAtPlatformEdge() {
+        Platform platformBelow = (Platform) getOneObjectAtOffset(0, getImage().getHeight() / 2, Platform.class);
+        if (platformBelow != null) {
+            int platformLeft = platformBelow.getX() - platformBelow.getImage().getWidth() / 2;
+            int platformRight = platformBelow.getX() + platformBelow.getImage().getWidth() / 2;
+
+            if (getX() - getImage().getWidth() / 2 <= platformLeft ||
+                getX() + getImage().getWidth() / 2 >= platformRight) {
+                // Stop movement if at the edge
+                return;
+            }
+        }
     }
 }
