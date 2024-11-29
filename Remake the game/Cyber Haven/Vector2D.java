@@ -51,4 +51,10 @@ public class Vector2D
     {
         return new Vector2D(v1.getX() + v2.getX(), v1.getY() + v2.getY());
     }
+
+    // Get the magnitude of the vector
+    public double getMagnitude()
+    {
+        return Math.sqrt(x * x + y * y);
+    }
 }

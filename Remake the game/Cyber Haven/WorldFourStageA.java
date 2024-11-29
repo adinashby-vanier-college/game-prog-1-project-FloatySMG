@@ -59,5 +59,7 @@ public class WorldFourStageA extends WorldFour
         addObject(deathZone,880,586);
         cyrusPlayer2.setLocation(169,369);
         cyrusPlayer2.setLocation(154,372);
+        Cannon cannon = new Cannon();
+        addObject(cannon,220,366);
     }
 }
