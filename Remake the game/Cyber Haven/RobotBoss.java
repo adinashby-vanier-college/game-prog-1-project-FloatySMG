@@ -16,4 +16,8 @@ public class RobotBoss extends Robots
     {
         super.act(); // Inherit behavior from Robots (and Characters)
     }
+
+    public RobotBoss() {
+    hitPoints = 40; // Level 1 robot dies in 1 hit
+    }
 }
