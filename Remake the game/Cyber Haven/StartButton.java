@@ -43,8 +43,8 @@ public class StartButton extends MenuButtons
      */
     public void transitionToWorldTwo()
     {
-        World worldTwo =  new  WorldTwo();
-        Greenfoot.setWorld(worldTwo);
+        World enterLevelOnePlayWorld =  new  EnterLevelOnePlayWorld();
+        Greenfoot.setWorld(enterLevelOnePlayWorld);
     }
 }
         

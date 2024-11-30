@@ -24,9 +24,10 @@ public class EnterLevelTwoMovie extends Actor
        currentImage.scale(scaleWidth, scaleHeight);
        setImage(currentImage);
 
-       // Check if the frame count has reached 114
-       if (frameCount >= 600) {
-           // Transition to TutorialStageA
+       // Check if the frame count has reached 600
+       if (frameCount >= 235) {
+           // Transition to WorldTwoStageA
+           Greenfoot.setWorld(new WorldTwoStageA());
        }
     }
 }

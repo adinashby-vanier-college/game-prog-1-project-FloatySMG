@@ -69,7 +69,7 @@ public class CyrusPlayer extends Characters {
             } else if (currentWorld instanceof WorldOneStageC) {
                 Greenfoot.setWorld(new WorldOneStageD());
             } else if (currentWorld instanceof WorldOneStageD) {
-                Greenfoot.setWorld(new WorldTwoStageA());
+                Greenfoot.setWorld(new StartMenu());
             } else if (currentWorld instanceof WorldTwoStageA) {
                 Greenfoot.setWorld(new WorldTwoStageB());
             } else if (currentWorld instanceof WorldTwoStageB) {
@@ -93,7 +93,7 @@ public class CyrusPlayer extends Characters {
             } else if (currentWorld instanceof WorldThreeStageE) {
                 Greenfoot.setWorld(new WorldThreeStageF());
             } else if (currentWorld instanceof WorldThreeStageF) {
-                Greenfoot.setWorld(new WorldFourStageA());
+                Greenfoot.setWorld(new CannonGainPlayWorld());
             }
         }
     }

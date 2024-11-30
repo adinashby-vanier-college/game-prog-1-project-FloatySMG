@@ -18,9 +18,10 @@ public class MovieRGF extends Actor
        currentImage.scale(scaleWidth, scaleHeight);
        setImage(currentImage);
 
-       // Check if the frame count has reached 114
-       if (frameCount >= 600) {
-           // Transition to TutorialStageA
+       // Check if the frame count has reached 590
+       if (frameCount >= 590) {
+           // Transition to WorldOneStageA
+           Greenfoot.setWorld(new WorldOneStageA());
        }
     }
 }

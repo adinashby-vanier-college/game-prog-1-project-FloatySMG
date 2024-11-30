@@ -24,9 +24,10 @@ public class GainCannonMovie extends Actor
        currentImage.scale(scaleWidth, scaleHeight);
        setImage(currentImage);
 
-       // Check if the frame count has reached 114
-       if (frameCount >= 600) {
-           // Transition to TutorialStageA
+       // Check if the frame count has reached 600
+       if (frameCount >= 90) {
+           // Transition to WorldFourStageA
+           Greenfoot.setWorld(new WorldFourStageA());
        }
     }
 }
