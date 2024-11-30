@@ -1,16 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * A switch that toggles an object’s visibility when hit by a CannonBall.
+ * A switch that toggles the visibility of BounceMedium and BounceHigh.
  */
-public class CannonSwitch extends MapParts {
-    private Actor target; // The object to show/hide
-    private boolean isTargetVisible; // Tracks if the target is visible or not
+public class CannonSwitch extends Actor {
+    private BounceMedium bounceMedium; // The BounceMedium object to show/hide
+    private BounceHigh bounceHigh; // The BounceHigh object to show/hide
+    private boolean isMediumVisible; // Tracks if the BounceMedium is visible
 
-    public CannonSwitch(Actor target) {
-        this.target = target; // Assign the object to control
-        isTargetVisible = false; // Initially hidden
-        updateTargetVisibility();
+    public CannonSwitch(BounceMedium bounceMedium, BounceHigh bounceHigh) {
+        this.bounceMedium = bounceMedium;
+        this.bounceHigh = bounceHigh;
+        isMediumVisible = false; // Start with BounceMedium hidden
     }
 
     public void act() {
@@ -19,23 +20,22 @@ public class CannonSwitch extends MapParts {
 
     private void checkCannonBallHit() {
         if (isTouching(CannonBall.class)) {
-            toggleTargetVisibility();
-            removeTouching(CannonBall.class); // Remove the CannonBall on hit
+            toggleVisibility();
+            removeTouching(CannonBall.class); // Remove the CannonBall after a hit
         }
     }
 
-    private void toggleTargetVisibility() {
-        isTargetVisible = !isTargetVisible; // Toggle the visibility state
-        updateTargetVisibility();
-    }
+    private void toggleVisibility() {
+        World world = getWorld();
 
-    private void updateTargetVisibility() {
-        if (isTargetVisible) {
-            if (!getWorld().getObjects(target.getClass()).contains(target)) {
-                getWorld().addObject(target, getX(), getY() + 50); // Add the target object below the switch
-            }
+        if (isMediumVisible) {
+            world.removeObject(bounceMedium); // Hide BounceMedium
+            world.addObject(bounceHigh, 287, 428); // Show BounceHigh
         } else {
-            getWorld().removeObject(target); // Remove the target object
+            world.removeObject(bounceHigh); // Hide BounceHigh
+            world.addObject(bounceMedium, 287, 428); // Show BounceMedium
         }
+
+        isMediumVisible = !isMediumVisible; // Toggle the state
     }
 }
