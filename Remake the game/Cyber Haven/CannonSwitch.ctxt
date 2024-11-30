@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=CannonSwitch
+comment0.text=\r\n\ A\ switch\ that\ toggles\ an\ object\u2019s\ visibility\ when\ hit\ by\ a\ CannonBall.\r\n
+comment1.params=target
+comment1.target=CannonSwitch(greenfoot.Actor)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ checkCannonBallHit()
+comment4.params=
+comment4.target=void\ toggleTargetVisibility()
+comment5.params=
+comment5.target=void\ updateTargetVisibility()
+numComments=6

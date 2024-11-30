@@ -4,11 +4,14 @@ public class RobotLv1 extends Robots {
     private final int speed = 1; // Average speed for level 1 robot
     private final int ATTACK_RANGE = 600; // Distance within which the robot will attack
 
+    public RobotLv1() {
+        hitPoints = 1; // Level 1 robot dies in 1 hit
+    }
+
     public void act() {
         super.act(); // Inherit behavior from Robots (and Characters)
         followPlayer();
         stopAtPlatformEdge();
-        checkCyrusCollision(); // Check if touched CyrusPlayer
     }
 
     private void followPlayer() {
@@ -33,26 +36,8 @@ public class RobotLv1 extends Robots {
 
             if (getX() - getImage().getWidth() / 2 <= platformLeft ||
                 getX() + getImage().getWidth() / 2 >= platformRight) {
-                // Stop movement if at the edge
-                return;
+                return; // Stop movement if at the edge
             }
-        }
-    }
-    
-    private void checkCyrusCollision() {
-        if (isTouching(CyrusPlayer.class)) {
-            resetLevel();
-        }
-    }
-    
-    private void resetLevel() {
-        // Get the current world and reset it
-        World currentWorld = getWorld();
-        try {
-            World newWorld = currentWorld.getClass().getConstructor().newInstance();
-            Greenfoot.setWorld(newWorld); // Restart the current level
-        } catch (Exception e) {
-            System.out.println("Error resetting level: " + e.getMessage());
         }
     }
 }
