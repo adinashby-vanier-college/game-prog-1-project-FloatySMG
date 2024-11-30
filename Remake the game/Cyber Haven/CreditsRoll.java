@@ -6,8 +6,7 @@ public class CreditsRoll extends World
     private int elapsedTime = 0;  // Variable to track time passed
 
     // Variables to track text addition times
-    private boolean firstTextAdded = false;
-    private boolean secondTextAdded = false;
+    private boolean allTextsRemoved = false;
 
     /**
      * Constructor for objects of class CreditsRoll.
@@ -37,8 +36,7 @@ public class CreditsRoll extends World
      */
     private void prepare()
     {
-        // Add the first credits object with a delay of 5000 ms (5 seconds)
-
+        // Add the initial credits objects
         CyberHavenCredits cyberHavenCredits = new CyberHavenCredits();
         addObject(cyberHavenCredits,858,76);
         CreditsA creditsA = new CreditsA();
@@ -54,7 +52,7 @@ public class CreditsRoll extends World
         CreditsF creditsF = new CreditsF();
         addObject(creditsF,858,426);
         CreditsG creditsG = new CreditsG();
-        addObject(creditsG,858,476);;
+        addObject(creditsG,858,476);
         CreditsH creditsH = new CreditsH();
         addObject(creditsH,858,526);
     }
@@ -65,6 +63,33 @@ public class CreditsRoll extends World
      */
     public void act()
     {
+        elapsedTime++;
+        
+        // Remove all credits texts at 19 seconds (1140 acts)
+        if (elapsedTime == 1140 && !allTextsRemoved) {
+            removeObjects(getObjects(CreditsText.class));
+            allTextsRemoved = true;
+        }
 
+        // Add and fade in CreditsI at 19 seconds (1140 acts)
+        if (elapsedTime >= 1140 && elapsedTime <= 1170) { // Fade in CreditsI over 0.5 seconds
+            CreditsI creditsI;
+            if (elapsedTime == 1140) {
+                creditsI = new CreditsI();
+                addObject(creditsI, 858, 276);
+            } else {
+                creditsI = getObjects(CreditsI.class).get(0);
+            }
+            int transparency = (int) ((elapsedTime - 1140) / 30.0 * 255);
+            creditsI.getImage().setTransparency(transparency);
+        } else if (elapsedTime > 1170) { // Ensure the image is fully opaque after fade-in
+            CreditsI creditsI = getObjects(CreditsI.class).get(0);
+            creditsI.getImage().setTransparency(255);
+        }
+
+        // Transition to GameStart world at 25 seconds (1500 acts)
+        if (elapsedTime == 1500) {
+            Greenfoot.setWorld(new GameStart());
+        }
     }
 }
