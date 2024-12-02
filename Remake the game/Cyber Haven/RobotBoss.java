@@ -17,7 +17,7 @@ public class RobotBoss extends Robots {
         // When health is between 30 and 27, shoot cannonballs
         if (hitPoints <= 30 && hitPoints > 27 && cannonBallCooldown <= 0) {
             shootBossCannonBall();
-            cannonBallCooldown = 30; // Set a cooldown to prevent shooting too fast
+            cannonBallCooldown = 60; // Increase the cooldown to shoot every 2 seconds (adjust as needed)
         } else if (hitPoints <= 27 && !hasSpawnedMovePartsB) {
             spawnMovePartsB();
         }
@@ -37,7 +37,9 @@ public class RobotBoss extends Robots {
         CyrusPlayer player = (CyrusPlayer) getWorld().getObjects(CyrusPlayer.class).get(0);
         Vector2D velocity = new Vector2D(player.getX() - getX(), player.getY() - getY());
         velocity.normalize(); // Normalize the vector to unit length
-        velocity = Vector2D.multiply(velocity, 300); // Adjust the speed of the cannonball
+
+        // Adjust the speed of the cannonball (multiply the velocity by a moderate factor)
+        velocity = Vector2D.multiply(velocity, 150); // Adjust the speed of the cannonball (moderate speed)
 
         // Apply the calculated velocity to the cannonball
         cannonBall.setVelocity(velocity);
