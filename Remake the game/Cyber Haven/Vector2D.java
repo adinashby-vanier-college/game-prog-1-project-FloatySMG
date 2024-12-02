@@ -1,60 +1,54 @@
-public class Vector2D
-{
+public class Vector2D {
     private double x;
     private double y;
 
-    public Vector2D(double x, double y)
-    {
+    // constructor - gotta set the x and y values
+    public Vector2D(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public double getX()
-    {
+    // get x value
+    public double getX() {
         return x;
     }
 
-    public double getY()
-    {
+    // get y value
+    public double getY() {
         return y;
     }
 
-    public void setX(double x)
-    {
+    // set x value
+    public void setX(double x) {
         this.x = x;
     }
 
-    public void setY(double y)
-    {
+    // set y value
+    public void setY(double y) {
         this.y = y;
     }
 
-    // Normalize the vector
-    public void normalize()
-    {
+    // normalize vector, make it a unit vector, like... normalize it
+    public void normalize() {
         double length = Math.sqrt(x * x + y * y);
-        if (length != 0)
-        {
+        if (length != 0) {
             x /= length;
             y /= length;
         }
     }
 
-    // Multiply the vector by a scalar
-    public static Vector2D multiply(Vector2D vector, double scalar)
-    {
+    // multiply vector by scalar, pretty simple
+    public static Vector2D multiply(Vector2D vector, double scalar) {
         return new Vector2D(vector.getX() * scalar, vector.getY() * scalar);
     }
 
-    // Add two vectors
-    public static Vector2D add(Vector2D v1, Vector2D v2)
-    {
+    // add two vectors together
+    public static Vector2D add(Vector2D v1, Vector2D v2) {
         return new Vector2D(v1.getX() + v2.getX(), v1.getY() + v2.getY());
     }
 
-    // Get the magnitude of the vector
-    public double getMagnitude()
-    {
+    // get the magnitude, or the length of the vector
+    public double getMagnitude() {
         return Math.sqrt(x * x + y * y);
     }
 }

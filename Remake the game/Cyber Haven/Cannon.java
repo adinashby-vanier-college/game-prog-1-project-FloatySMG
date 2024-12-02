@@ -7,7 +7,7 @@ public class Cannon extends Actor
 {
     private static final double CANNON_BALL_VELOCITY = 2500.0;  // Speed of the cannonball
     private long lastShotTime;  // Time of the last shot
-    private static final long COOLDOWN_TIME = 500;  // 1000 milliseconds = 1 second cooldown
+    private static final long COOLDOWN_TIME = 0001;  // 1000 milliseconds = 1 second cooldown
 
     public Cannon()
     {

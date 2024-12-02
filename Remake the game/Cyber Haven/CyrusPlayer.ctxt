@@ -2,6 +2,10 @@
 comment0.target=CyrusPlayer
 comment1.params=
 comment1.target=void\ act()
+comment10.params=damageAmount
+comment10.target=void\ takeDamage(int)
+comment11.params=
+comment11.target=void\ die()
 comment2.params=
 comment2.target=void\ checkKeys()
 comment3.params=
@@ -18,4 +22,4 @@ comment8.params=
 comment8.target=void\ checkRobotCollision()
 comment9.params=
 comment9.target=void\ resetLevel()
-numComments=10
+numComments=12

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=BossCannonBall
+comment1.params=
+comment1.target=BossCannonBall()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=newVelocity
+comment3.target=void\ setVelocity(Vector2D)
+comment4.params=
+comment4.target=void\ move()
+comment5.params=
+comment5.target=void\ applyGravity()
+comment6.params=
+comment6.target=void\ checkForCollisions()
+comment7.params=
+comment7.target=void\ checkForRemoval()
+numComments=8

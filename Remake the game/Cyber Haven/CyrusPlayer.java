@@ -5,6 +5,7 @@ public class CyrusPlayer extends Characters {
     private int jumpCount = 0;
     private final int maxJumps = 200; // Allow double jump
     private boolean jumpKeyPressed = false; // Track if the jump key is held down
+    private int health = 100; // Player's health (adjust as needed)
 
     public void act() {
         super.act(); // Use common behavior from Characters
@@ -113,5 +114,19 @@ public class CyrusPlayer extends Characters {
         } catch (Exception e) {
             System.out.println("Error resetting level: " + e.getMessage());
         }
+    }
+
+    // Method to reduce health when the player takes damage
+    public void takeDamage(int damageAmount) {
+        health -= damageAmount;
+        if (health <= 0) {
+            die();
+        }
+    }
+
+    // Method to handle player death
+    private void die() {
+        // You can add death animation or reset level logic here
+        resetLevel(); // Example: Reset the level if the player dies
     }
 }
