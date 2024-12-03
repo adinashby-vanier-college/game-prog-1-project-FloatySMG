@@ -9,8 +9,7 @@ public class PauseButton extends MenuButtons
     /**
      * Constructor - Initialize the button images and sets the default image. 
      */
-    public PauseButton()
-    {
+    public PauseButton() {
         pauseImage =  new  GreenfootImage("PauseButton.png"); 
         pauseHoverImage =  new  GreenfootImage("PauseHoverButton.png");
         setImage(pauseImage);
@@ -38,8 +37,10 @@ public class PauseButton extends MenuButtons
      */
     public void transitionToMenu()
     {
-        World menu =  new  Menu();
-        Greenfoot.setWorld(menu);
+        World currentWorld = getWorld(); // Get the current world
+        if (currentWorld != null) {
+            Greenfoot.setWorld(new Menu(currentWorld));
+        }
     } 
 }
 

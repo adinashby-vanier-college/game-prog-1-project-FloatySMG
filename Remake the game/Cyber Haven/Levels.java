@@ -11,6 +11,7 @@ public class Levels extends World {
      */
     public Levels() {
         super(1600, 600, 1); // Create a new world with specified size
+        addPauseButton();
     }
 
     /**
@@ -22,5 +23,12 @@ public class Levels extends World {
         }
         currentMusic = new GreenfootSound(musicFile);
         currentMusic.playLoop(); // Start looping the new music
+    }
+    
+    public void addPauseButton() {
+        PauseButton pauseButton = new PauseButton();
+        addObject(pauseButton,1408,50);
+        pauseButton.setLocation(1410,50);
+
     }
 }

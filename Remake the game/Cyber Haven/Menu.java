@@ -8,18 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Menu extends World
 {
-
+    private World previousWorld;
     /**
      * Constructor for objects of class Menu.
      * 
      */
-    public Menu()
+    public Menu(World gameWorld)
     {    
         // Create a new world with 1600x600 cells with a cell size of 1x1 pixels.
         super(1600, 600, 1); 
+        this.previousWorld = gameWorld;
         prepare();
     }
-    
+        
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -29,11 +30,15 @@ public class Menu extends World
         ExitButton exitButton = new ExitButton();
         addObject(exitButton,800,513);
         exitButton.setLocation(800,513);
-        ResumeButton resumeButton = new ResumeButton();
+        ResumeButton resumeButton = new ResumeButton(previousWorld);
         addObject(resumeButton,800,393);
         resumeButton.setLocation(800,393);
         CyberHavenTitle cyberHavenTitle = new CyberHavenTitle();
         addObject(cyberHavenTitle,800,136);
         cyberHavenTitle.setLocation(800,136);        
     }
+    
+    //public World getPreviousWorld() {
+        //return previousWorld;
+    //}
 }
